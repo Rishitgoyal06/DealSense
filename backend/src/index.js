@@ -4,4 +4,20 @@ import connectDB from "./db/index.js";
 dotenv.config({
     path: './.env'
 });
-connectDB();
+
+connectDB()
+.then(() => {
+    const PORT = process.env.PORT || 8000;
+
+    app.on("error", (error) => {
+        console.error("Error:", error);
+        throw error;
+    });
+
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+})
+.catch((error) => {
+    console.error("Failed to connect to the database!!:", error);
+});
