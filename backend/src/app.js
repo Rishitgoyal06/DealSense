@@ -7,6 +7,8 @@ import authRoutes from './routes/authRoutes.js';
 import leadRoutes from './routes/leadRoutes.js';
 import quotationRoutes from './routes/quotationRoutes.js';
 import followUpRoutes from './routes/followUpRoutes.js';
+import paymentRoutes from './routes/paymentRoutes.js';
+import interactionRoutes from './routes/interactionRoutes.js';
 
 const app = express();
 
@@ -25,6 +27,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/leads', leadRoutes);
 app.use('/api/quotations', quotationRoutes);
 app.use('/api/followups', followUpRoutes);
+app.use('/api/payments', paymentRoutes);
+app.use('/api/interactions', interactionRoutes);
 
 // Global error handling middleware
 app.use((err, req, res, next) => {
