@@ -3,6 +3,12 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
+// GET all follow-ups
+export const getAllFollowUps = asyncHandler(async (req, res) => {
+  const followUps = await FollowUp.find().populate("leadId", "name phone").sort({ scheduledFor: -1 });
+  return res.json(new ApiResponse(200, "Follow-ups fetched successfully", followUps));
+});
+
 // CREATE follow-up
 export const createFollowUp = asyncHandler(async (req, res) => {
   const followUp = await FollowUp.create(req.body);
