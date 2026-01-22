@@ -218,10 +218,9 @@ export function HeroSectionOne() {
               style={{ backgroundColor: "#FFFFFF", borderColor: "#E2E8F0" }}
             >
               <img
-                src="https://assets.aceternity.com/pro/aceternity-landing.webp"
+                src="/Dashboard.png"
                 alt="DealSense Dashboard Preview"
-                className="w-full h-auto object-cover"
-                style={{ aspectRatio: "16/10" }}
+                className="w-full h-auto object-contain scale-110 sm:scale-100"
               />
             </motion.div>
           </div>
