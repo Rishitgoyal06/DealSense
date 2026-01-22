@@ -2,6 +2,7 @@ import express from "express";
 import protect from "../middleware/authMiddleware.js";
 import {
   createQuotation,
+  getAllQuotations,
   getQuotationsByLead,
   updateQuotationResponse,
   markQuotationShared
@@ -10,6 +11,7 @@ import {
 const router = express.Router();
 
 router.post("/", protect, createQuotation);
+router.get("/", protect, getAllQuotations);
 router.get("/lead/:leadId", protect, getQuotationsByLead);
 router.patch("/:id/response", protect, updateQuotationResponse);
 router.patch("/:id/shared", protect, markQuotationShared);

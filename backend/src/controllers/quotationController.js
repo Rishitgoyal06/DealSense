@@ -3,6 +3,12 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
+// GET all quotations
+export const getAllQuotations = asyncHandler(async (req, res) => {
+  const quotations = await Quotation.find().populate("leadId", "name phone").sort({ createdAt: -1 });
+  return res.json(new ApiResponse(200, "Quotations fetched successfully", quotations));
+});
+
 // CREATE quotation
 export const createQuotation = asyncHandler(async (req, res) => {
   const quotation = await Quotation.create(req.body);

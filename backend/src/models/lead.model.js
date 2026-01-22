@@ -10,10 +10,18 @@ const leadSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    requirement: {
+      type: String,
+      required: true,
+    },
+    budget: {
+      type: Number,
+      required: true,
+    },
     leadType: {
       type: String,
       enum: ['buy', 'rent', 'sell', 'club'],
-      required: true,
+      default: 'buy',
     },
     budgetMin: Number,
     budgetMax: Number,
