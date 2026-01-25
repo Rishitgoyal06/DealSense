@@ -38,26 +38,26 @@ export default function PaymentsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading payments...</div>
+      <div className="min-h-screen flex items-center justify-center bg-base-100">
+        <div className="text-lg text-base-content">Loading payments...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      <header className="bg-white shadow-lg border-b border-gray-200">
+    <div className="min-h-screen bg-base-200">
+      <header className="bg-base-100 shadow-lg border-b border-base-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ background: "linear-gradient(135deg, #DC2626 0%, #B91C1C 100%)" }}>
                 <CreditCard size={24} className="text-white" />
               </div>
-              <h1 className="text-3xl font-bold" style={{ color: "#0F172A" }}>Payment Schedules</h1>
+              <h1 className="text-3xl font-bold text-base-content">Payment Schedules</h1>
             </div>
             <Link
               href="/dashboard"
-              className="text-gray-600 hover:text-gray-900 px-4 py-3 rounded-xl text-sm font-medium border border-gray-200 hover:border-gray-300 transition-all duration-200 bg-white shadow-sm hover:shadow-md"
+              className="text-base-content/70 hover:text-base-content px-4 py-3 rounded-xl text-sm font-medium border border-base-300 hover:border-base-content/50 transition-all duration-200 bg-base-100 shadow-sm hover:shadow-md"
             >
               ← Dashboard
             </Link>
@@ -72,7 +72,7 @@ export default function PaymentsPage() {
           </div>
         )}
 
-        <div className="bg-white shadow-xl overflow-hidden rounded-2xl border border-gray-100">
+        <div className="bg-base-100 shadow-xl overflow-hidden rounded-2xl border border-base-300">
           {riskyPayments.length === 0 ? (
             <div className="text-center py-16">
               <div className="w-20 h-20 bg-gradient-to-r from-green-100 to-green-200 rounded-full flex items-center justify-center mx-auto mb-6">

@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useTheme } from "@/context/ThemeContext";
 
 
 export default function Home() {
@@ -38,6 +39,8 @@ export default function Home() {
 }
 
 export function HeroSectionOne() {
+  const { theme } = useTheme();
+  
   return (
     <div className="relative min-h-screen w-full flex flex-col bg-base-100">
       <Navbar />
@@ -77,7 +80,7 @@ export function HeroSectionOne() {
               </a>
               <a
                 href="/register"
-                className="btn btn-outline w-full sm:w-auto px-8 py-4"
+                className="w-full sm:w-auto px-8 py-4 font-semibold rounded-md transition-all duration-200 text-center border-2 border-base-content text-base-content hover:bg-base-content hover:text-base-100"
               >
                 Schedule Demo
               </a>
@@ -136,7 +139,7 @@ export function HeroSectionOne() {
               className="card bg-base-200 border border-base-300 shadow-lg overflow-hidden"
             >
               <img
-                src="/Dashboard.png"
+                src={theme === "light" ? "/Dashboard_Dark.png" : "/Dashboard_Light.png"}
                 alt="DealSense Dashboard Preview"
                 className="w-full h-auto object-contain scale-110 sm:scale-100"
               />
@@ -629,39 +632,39 @@ const FeatureComparisonSection = () => {
             <thead>
               <tr className="bg-base-200">
                 <th className="text-left p-4 border-b border-base-300 text-base-content">Feature</th>
-                <th className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>DealSense</th>
+                <th className="text-center p-4 border-b border-base-300 text-success">DealSense</th>
                 <th className="text-center p-4 border-b border-base-300 text-base-content/70">WhatsApp + Excel</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td className="p-4 border-b border-base-300 text-base-content">Lead Organization</td>
-                <td className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>✓ Automated</td>
+                <td className="text-center p-4 border-b border-base-300 text-success">✓ Automated</td>
                 <td className="text-center p-4 border-b border-base-300 text-error">✗ Manual</td>
               </tr>
               <tr className="bg-base-200">
                 <td className="p-4 border-b border-base-300 text-base-content">Follow-up Reminders</td>
-                <td className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>✓ Smart Alerts</td>
+                <td className="text-center p-4 border-b border-base-300 text-success">✓ Smart Alerts</td>
                 <td className="text-center p-4 border-b border-base-300 text-error">✗ Memory Based</td>
               </tr>
               <tr>
                 <td className="p-4 border-b border-base-300 text-base-content">Quotation Tracking</td>
-                <td className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>✓ Real-time Status</td>
+                <td className="text-center p-4 border-b border-base-300 text-success">✓ Real-time Status</td>
                 <td className="text-center p-4 border-b border-base-300 text-error">✗ Lost in Chats</td>
               </tr>
               <tr className="bg-base-200">
                 <td className="p-4 border-b border-base-300 text-base-content">Payment Alerts</td>
-                <td className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>✓ Proactive Warnings</td>
+                <td className="text-center p-4 border-b border-base-300 text-success">✓ Proactive Warnings</td>
                 <td className="text-center p-4 border-b border-base-300 text-error">✗ Reactive Only</td>
               </tr>
               <tr>
                 <td className="p-4 border-b border-base-300 text-base-content">Time Saved Weekly</td>
-                <td className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>5+ Hours</td>
+                <td className="text-center p-4 border-b border-base-300 text-success">5+ Hours</td>
                 <td className="text-center p-4 border-b border-base-300 text-error">0 Hours</td>
               </tr>
               <tr className="bg-base-200">
                 <td className="p-4 text-base-content">Lead Conversion Rate</td>
-                <td className="text-center p-4" style={{ color: "#166534" }}>+40% Increase</td>
+                <td className="text-center p-4 text-success">+40% Increase</td>
                 <td className="text-center p-4 text-error">Baseline</td>
               </tr>
             </tbody>
@@ -823,8 +826,7 @@ const Footer = () => {
         <div className="flex items-center justify-center gap-6 text-sm text-base-content/70">
           <a
             href="https://github.com/Rishitgoyal06/DealSense"
-            className="hover:underline transition-colors duration-200"
-            style={{ color: "#166534" }}
+            className="hover:underline transition-colors duration-200 text-success"
             target="_blank"
           >
             GitHub

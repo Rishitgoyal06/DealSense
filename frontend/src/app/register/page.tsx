@@ -145,7 +145,7 @@ export default function RegisterPage() {
 
                 <div className="space-y-2">
                   <label htmlFor="name" className="label">
-                    <span className="label-text">Full Name</span>
+                    <span className="label-text text-base-content">Full Name</span>
                   </label>
                   <Input
                     id="name"
@@ -161,7 +161,7 @@ export default function RegisterPage() {
 
                 <div className="space-y-2">
                   <label htmlFor="email" className="label">
-                    <span className="label-text">Email Address</span>
+                    <span className="label-text text-base-content">Email Address</span>
                   </label>
                   <Input
                     id="email"
@@ -177,7 +177,7 @@ export default function RegisterPage() {
 
                 <div className="space-y-2">
                   <label htmlFor="password" className="label">
-                    <span className="label-text">Password</span>
+                    <span className="label-text text-base-content">Password</span>
                   </label>
                   <div className="relative">
                     <Input
@@ -221,7 +221,7 @@ export default function RegisterPage() {
 
                 <div className="space-y-2">
                   <label htmlFor="confirmPassword" className="label">
-                    <span className="label-text">Confirm Password</span>
+                    <span className="label-text text-base-content">Confirm Password</span>
                   </label>
                   <div className="relative">
                     <Input

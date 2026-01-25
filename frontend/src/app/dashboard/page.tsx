@@ -65,44 +65,57 @@ export default function DashboardPage() {
 
   const fetchDashboardStats = async () => {
     try {
+      // Set a timeout for API calls
+      const timeout = 5000; // 5 seconds
+      
+      const fetchWithTimeout = (url: string, options: any) => {
+        return Promise.race([
+          fetch(url, options),
+          new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Request timeout')), timeout)
+          )
+        ]);
+      };
+
       // Fetch leads count
-      const leadsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/leads`, {
+      const leadsResponse = await fetchWithTimeout(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/leads`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
-      });
-      const leadsData = await leadsResponse.json();
-      const totalLeads = leadsData.data?.length || 0;
-      const activeLeads = leadsData.data?.filter((lead: any) => lead.status === 'active').length || 0;
+      }) as Response;
+      
+      if (leadsResponse.ok) {
+        const leadsData = await leadsResponse.json();
+        const totalLeads = leadsData.data?.length || 0;
+        const activeLeads = leadsData.data?.filter((lead: any) => lead.status === 'active').length || 0;
+        const dealsClosed = leadsData.data?.filter((lead: any) => lead.status === 'closed').length || 0;
+        
+        setStats(prev => ({ ...prev, totalLeads, activeLeads, dealsClosed }));
+      }
 
-      // Fetch today's follow-ups count
-      const followUpsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/followups/today`, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+      // Fetch other stats with fallback
+      try {
+        const followUpsResponse = await fetchWithTimeout(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/followups/today`, {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        }) as Response;
+        
+        if (followUpsResponse.ok) {
+          const followUpsData = await followUpsResponse.json();
+          setStats(prev => ({ ...prev, todayFollowUps: followUpsData.data?.length || 0 }));
         }
-      });
-      const followUpsData = await followUpsResponse.json();
-      const todayFollowUps = followUpsData.data?.length || 0;
+      } catch (e) { /* Ignore follow-ups error */ }
 
-      // Fetch quotations count
-      const quotationsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/quotations`, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+      try {
+        const quotationsResponse = await fetchWithTimeout(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/quotations`, {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+        }) as Response;
+        
+        if (quotationsResponse.ok) {
+          const quotationsData = await quotationsResponse.json();
+          setStats(prev => ({ ...prev, totalQuotations: quotationsData.data?.length || 0 }));
         }
-      });
-      const quotationsData = await quotationsResponse.json();
-      const totalQuotations = quotationsData.data?.length || 0;
+      } catch (e) { /* Ignore quotations error */ }
 
-      // Count closed deals (leads with status 'closed')
-      const dealsClosed = leadsData.data?.filter((lead: any) => lead.status === 'closed').length || 0;
-
-      setStats({
-        totalLeads,
-        activeLeads,
-        todayFollowUps,
-        dealsClosed,
-        totalQuotations
-      });
     } catch (error) {
       console.error('Failed to fetch dashboard stats:', error);
       // Keep default values on error
@@ -116,8 +129,8 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading...</div>
+      <div className="min-h-screen flex items-center justify-center bg-base-100">
+        <div className="text-lg text-base-content">Loading...</div>
       </div>
     );
   }
