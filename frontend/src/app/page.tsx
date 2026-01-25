@@ -17,6 +17,8 @@ import {
   Star,
   Quote,
 } from "lucide-react";
+import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
+
 
 export default function Home() {
   return (
@@ -531,8 +533,41 @@ const SolutionSection = () => {
 };
 
 const TestimonialsSection = () => {
+  const testimonials = [
+    {
+      quote: "DealSense completely transformed how I manage my leads. I went from losing 30% of potential deals to closing 85% more transactions.",
+      name: "Rajesh Sharma",
+      title: "Senior Real Estate Broker, Mumbai",
+    },
+    {
+      quote: "Before DealSense, I was managing everything on WhatsApp and Excel. Now I have complete visibility into my pipeline.",
+      name: "Priya Kapoor",
+      title: "Real Estate Consultant, Delhi",
+    },
+    {
+      quote: "The quotation tracking feature saved my business. My conversion rate doubled with DealSense.",
+      name: "Amit Mehta",
+      title: "Property Dealer, Bangalore",
+    },
+    {
+      quote: "DealSense helped me organize my entire business. The payment alerts saved me from multiple defaults.",
+      name: "Sunita Gupta",
+      title: "Real Estate Agent, Pune",
+    },
+    {
+      quote: "My lead conversion improved by 60% and I never miss important follow-ups anymore.",
+      name: "Vikram Singh",
+      title: "Property Consultant, Gurgaon",
+    },
+    {
+      quote: "The best investment I made for my real estate business. DealSense keeps me organized.",
+      name: "Neha Agarwal",
+      title: "Real Estate Broker, Hyderabad",
+    },
+  ];
+
   return (
-    <div className="py-20 px-6" style={{ backgroundColor: "#FFFFFF" }}>
+    <div className="py-20 px-6" style={{ backgroundColor: "#F8FAFC" }}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -541,88 +576,13 @@ const TestimonialsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold mb-4" style={{ color: "#0F172A" }}>
-            Trusted by real estate professionals
+            What our customers say
           </h2>
           <p className="text-lg" style={{ color: "#64748B" }}>
-            See how DealSense is transforming real estate operations
+            Real estate professionals trust DealSense to grow their business
           </p>
         </motion.div>
-
-        <div className="relative overflow-hidden">
-          <motion.div
-            className="flex gap-6"
-            animate={{
-              x: ["-100%", "0%"],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 20,
-                ease: "linear",
-              },
-            }}
-          >
-            {[
-              { name: "Rajesh Sharma", role: "Senior Real Estate Broker, Mumbai", initials: "RS", text: "DealSense completely transformed how I manage my leads. I went from losing 30% of potential deals to closing 85% more transactions." },
-              { name: "Priya Kapoor", role: "Real Estate Consultant, Delhi", initials: "PK", text: "Before DealSense, I was managing everything on WhatsApp and Excel. Now I have complete visibility into my pipeline." },
-              { name: "Amit Mehta", role: "Property Dealer, Bangalore", initials: "AM", text: "The quotation tracking feature saved my business. My conversion rate doubled with DealSense." },
-              { name: "Sunita Gupta", role: "Real Estate Agent, Pune", initials: "SG", text: "DealSense helped me organize my entire business. The payment alerts saved me from multiple defaults." },
-              { name: "Vikram Singh", role: "Property Consultant, Gurgaon", initials: "VS", text: "My lead conversion improved by 60% and I never miss important follow-ups anymore." },
-              { name: "Neha Agarwal", role: "Real Estate Broker, Hyderabad", initials: "NA", text: "The best investment I made for my real estate business. DealSense keeps me organized." }
-            ].concat([
-              { name: "Rajesh Sharma", role: "Senior Real Estate Broker, Mumbai", initials: "RS", text: "DealSense completely transformed how I manage my leads. I went from losing 30% of potential deals to closing 85% more transactions." },
-              { name: "Priya Kapoor", role: "Real Estate Consultant, Delhi", initials: "PK", text: "Before DealSense, I was managing everything on WhatsApp and Excel. Now I have complete visibility into my pipeline." },
-              { name: "Amit Mehta", role: "Property Dealer, Bangalore", initials: "AM", text: "The quotation tracking feature saved my business. My conversion rate doubled with DealSense." },
-              { name: "Sunita Gupta", role: "Real Estate Agent, Pune", initials: "SG", text: "DealSense helped me organize my entire business. The payment alerts saved me from multiple defaults." },
-              { name: "Vikram Singh", role: "Property Consultant, Gurgaon", initials: "VS", text: "My lead conversion improved by 60% and I never miss important follow-ups anymore." },
-              { name: "Neha Agarwal", role: "Real Estate Broker, Hyderabad", initials: "NA", text: "The best investment I made for my real estate business. DealSense keeps me organized." }
-            ]).map((testimonial, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-80 p-8 rounded-xl shadow-lg"
-                style={{
-                  background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)",
-                  border: "1px solid #E2E8F0",
-                }}
-              >
-                <div className="flex items-center mb-4">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star
-                      key={star}
-                      size={20}
-                      fill="#F59E0B"
-                      color="#F59E0B"
-                    />
-                  ))}
-                </div>
-                <Quote size={24} color="#166534" className="mb-4" />
-                <p
-                  className="text-base mb-6 leading-relaxed"
-                  style={{ color: "#64748B" }}
-                >
-                  "{testimonial.text}"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: "#166534" }}
-                  >
-                    <span className="text-white font-semibold">{testimonial.initials}</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold" style={{ color: "#0F172A" }}>
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm" style={{ color: "#64748B" }}>
-                      {testimonial.role}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
+        <InfiniteMovingCards items={testimonials} direction="right" speed="normal" />
       </div>
     </div>
   );
