@@ -17,6 +17,9 @@ module.exports = {
     },
     extend: {
       colors: {
+        'brand-green': '#166534',
+        'brand-dark': '#0F172A',
+        'brand-gray': '#64748B',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -59,4 +62,20 @@ module.exports = {
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          primary: "#166534",
+          "primary-content": "#ffffff",
+        },
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          primary: "#166534",
+          "primary-content": "#ffffff",
+        },
+      },
+    ],
+  },
 }

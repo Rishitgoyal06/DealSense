@@ -18,11 +18,12 @@ import {
   Quote,
 } from "lucide-react";
 import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
+import ThemeToggle from "@/components/ThemeToggle";
 
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-base-100">
       <HeroSectionOne />
       <ProblemSection />
       <SolutionSection />
@@ -38,21 +39,12 @@ export default function Home() {
 
 export function HeroSectionOne() {
   return (
-    <div
-      className="relative min-h-screen w-full flex flex-col"
-      style={{ 
-        backgroundColor: "#FAFBFC",
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23166534' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-      }}
-    >
+    <div className="relative min-h-screen w-full flex flex-col bg-base-100">
       <Navbar />
       <div className="flex-1 flex items-center justify-center">
         <div className="max-w-6xl mx-auto w-full">
           <div className="px-6 py-20 md:py-32">
-            <h1
-              className="mx-auto max-w-4xl text-center text-5xl font-bold md:text-6xl lg:text-7xl mb-8 leading-tight"
-              style={{ color: "#0F172A" }}
-            >
+            <h1 className="mx-auto max-w-4xl text-center text-5xl font-bold md:text-6xl lg:text-7xl mb-8 leading-tight text-base-content">
               Manage Real Estate Deals Without
               <span style={{ color: "#166534" }}> WhatsApp Chaos</span>
             </h1>
@@ -61,8 +53,7 @@ export function HeroSectionOne() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mx-auto max-w-2xl text-center text-lg mb-12 leading-relaxed"
-              style={{ color: "#64748B" }}
+              className="mx-auto max-w-2xl text-center text-lg mb-12 leading-relaxed text-base-content/70"
             >
               Streamline your real estate operations with intelligent lead
               tracking, automated follow-ups, and comprehensive deal management.
@@ -81,33 +72,12 @@ export function HeroSectionOne() {
                   backgroundColor: "#166534",
                   color: "#FFFFFF",
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#14532D";
-                  e.currentTarget.style.transform = "translateY(-1px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#166534";
-                  e.currentTarget.style.transform = "translateY(0)";
-                }}
               >
                 Start Free Trial
               </a>
               <a
                 href="/register"
-                className="w-full sm:w-auto px-8 py-4 font-semibold rounded-md transition-all duration-200 text-center"
-                style={{
-                  border: "1px solid #CBD5E1",
-                  color: "#475569",
-                  backgroundColor: "#FFFFFF",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#F8FAFC";
-                  e.currentTarget.style.borderColor = "#94A3B8";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#FFFFFF";
-                  e.currentTarget.style.borderColor = "#CBD5E1";
-                }}
+                className="btn btn-outline w-full sm:w-auto px-8 py-4"
               >
                 Schedule Demo
               </a>
@@ -119,76 +89,40 @@ export function HeroSectionOne() {
               transition={{ duration: 0.5, delay: 0.7 }}
               className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
             >
-              <div
-                className="p-8 rounded-lg border"
-                style={{ backgroundColor: "#FFFFFF", borderColor: "#E2E8F0" }}
-              >
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-6"
-                  style={{ backgroundColor: "#F1F5F9" }}
-                >
+              <div className="card bg-base-200 border border-base-300 p-8">
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 bg-base-300">
                   <BarChart3 className="w-6 h-6" style={{ color: "#166534" }} />
                 </div>
-                <h3
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: "#0F172A" }}
-                >
+                <h3 className="text-xl font-semibold mb-3 text-base-content">
                   Lead Management
                 </h3>
-                <p
-                  className="text-base leading-relaxed"
-                  style={{ color: "#64748B" }}
-                >
+                <p className="text-base leading-relaxed text-base-content/70">
                   Centralized lead tracking with intelligent scoring and
                   automated qualification workflows.
                 </p>
               </div>
 
-              <div
-                className="p-8 rounded-lg border"
-                style={{ backgroundColor: "#FFFFFF", borderColor: "#E2E8F0" }}
-              >
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-6"
-                  style={{ backgroundColor: "#F1F5F9" }}
-                >
-                  <Clock color="#166534" />
+              <div className="card bg-base-200 border border-base-300 p-8">
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 bg-base-300">
+                  <Clock className="w-6 h-6" style={{ color: "#166534" }} />
                 </div>
-                <h3
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: "#0F172A" }}
-                >
+                <h3 className="text-xl font-semibold mb-3 text-base-content">
                   Smart Follow-ups
                 </h3>
-                <p
-                  className="text-base leading-relaxed"
-                  style={{ color: "#64748B" }}
-                >
+                <p className="text-base leading-relaxed text-base-content/70">
                   Automated scheduling and reminders ensure no opportunity falls
                   through the cracks.
                 </p>
               </div>
 
-              <div
-                className="p-8 rounded-lg border"
-                style={{ backgroundColor: "#FFFFFF", borderColor: "#E2E8F0" }}
-              >
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-6"
-                  style={{ backgroundColor: "#F1F5F9" }}
-                >
-                  <CircleCheck color="#166534" />
+              <div className="card bg-base-200 border border-base-300 p-8">
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 bg-base-300">
+                  <CircleCheck className="w-6 h-6" style={{ color: "#166534" }} />
                 </div>
-                <h3
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: "#0F172A" }}
-                >
+                <h3 className="text-xl font-semibold mb-3 text-base-content">
                   Deal Intelligence
                 </h3>
-                <p
-                  className="text-base leading-relaxed"
-                  style={{ color: "#64748B" }}
-                >
+                <p className="text-base leading-relaxed text-base-content/70">
                   Advanced analytics and insights to optimize your sales process
                   and close more deals.
                 </p>
@@ -199,8 +133,7 @@ export function HeroSectionOne() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="rounded-lg border shadow-sm overflow-hidden"
-              style={{ backgroundColor: "#FFFFFF", borderColor: "#E2E8F0" }}
+              className="card bg-base-200 border border-base-300 shadow-lg overflow-hidden"
             >
               <img
                 src="/Dashboard.png"
@@ -217,49 +150,30 @@ export function HeroSectionOne() {
 
 const Navbar = () => {
   return (
-    <nav
-      className="flex w-full items-center justify-between px-6 py-6 border-b"
-      style={{ borderColor: "#E2E8F0", backgroundColor: "#FFFFFF" }}
-    >
-      <div className="flex items-center gap-3">
-        <div
-          className="w-10 h-10 rounded-md flex items-center justify-center"
-          style={{ backgroundColor: "#166534" }}
-        >
-          <MapPinHouse size={28} color="#FFFFFF" />
+    <nav className="navbar bg-base-100 border-b border-base-300 px-20">
+      <div className="navbar-start">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-md flex items-center justify-center" style={{ backgroundColor: "#166534" }}>
+            <MapPinHouse size={28} className="text-white" />
+          </div>
+          <h1 className="text-xl font-bold md:text-2xl text-base-content">
+            DealSense
+          </h1>
         </div>
-        <h1
-          className="text-xl font-bold md:text-2xl"
-          style={{ color: "#0F172A" }}
-        >
-          DealSense
-        </h1>
       </div>
-      <a
-        href="/login"
-        className="px-6 py-2 font-medium rounded-md transition-all duration-200"
-        style={{
-          backgroundColor: "#166534",
-          color: "#FFFFFF",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "#14532D";
-          e.currentTarget.style.transform = "translateY(-1px)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "#166534";
-          e.currentTarget.style.transform = "translateY(0)";
-        }}
-      >
-        Login
-      </a>
+      <div className="navbar-end gap-4">
+        <ThemeToggle />
+        <a href="/login" className="btn btn-md px-6" style={{ backgroundColor: "#166534", color: "white", fontWeight: "600" }}>
+          Login
+        </a>
+      </div>
     </nav>
   );
 };
 
 const ProblemSection = () => {
   return (
-    <div className="py-20 px-6" style={{ backgroundColor: "#F8FAFC" }}>
+    <div className="py-20 px-6 bg-base-200">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -267,10 +181,10 @@ const ProblemSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4" style={{ color: "#0F172A" }}>
+          <h2 className="text-4xl font-bold mb-4 text-base-content">
             The real problems in real estate operations
           </h2>
-          <p className="text-lg mb-8" style={{ color: "#64748B" }}>
+          <p className="text-lg mb-8 text-base-content/70">
             Industry statistics reveal the hidden costs of poor lead management
           </p>
         </motion.div>
@@ -301,74 +215,38 @@ const ProblemSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          <div
-            className="p-8 rounded-lg border text-center"
-            style={{ backgroundColor: "#FFFFFF", borderColor: "#E2E8F0" }}
-          >
-            <div
-              className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
-              style={{ backgroundColor: "#FEF2F2" }}
-            >
-              <TabletSmartphone size={32} color="#166534" />
+          <div className="card bg-base-100 border border-base-300 p-8 text-center">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-base-300">
+              <TabletSmartphone size={32} style={{ color: "#166534" }} />
             </div>
-            <h3
-              className="text-xl font-semibold mb-4"
-              style={{ color: "#0F172A" }}
-            >
+            <h3 className="text-xl font-semibold mb-4 text-base-content">
               Everything on WhatsApp
             </h3>
-            <p
-              className="text-base leading-relaxed"
-              style={{ color: "#64748B" }}
-            >
+            <p className="text-base leading-relaxed text-base-content/70">
               Quotations, follow-ups, and responses get lost in endless chat threads, leading to 23% lead loss
             </p>
           </div>
 
-          <div
-            className="p-8 rounded-lg border text-center"
-            style={{ backgroundColor: "#FFFFFF", borderColor: "#E2E8F0" }}
-          >
-            <div
-              className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
-              style={{ backgroundColor: "#FEF2F2" }}
-            >
-              <Brain size={32} color="#166534" />
+          <div className="card bg-base-100 border border-base-300 p-8 text-center">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-base-300">
+              <Brain size={32} style={{ color: "#166534" }} />
             </div>
-            <h3
-              className="text-xl font-semibold mb-4"
-              style={{ color: "#0F172A" }}
-            >
+            <h3 className="text-xl font-semibold mb-4 text-base-content">
               Manual memory & Excel sheets
             </h3>
-            <p
-              className="text-base leading-relaxed"
-              style={{ color: "#64748B" }}
-            >
+            <p className="text-base leading-relaxed text-base-content/70">
               Brokers waste 8 hours weekly on manual tracking, missing 40% of follow-up opportunities
             </p>
           </div>
 
-          <div
-            className="p-8 rounded-lg border text-center"
-            style={{ backgroundColor: "#FFFFFF", borderColor: "#E2E8F0" }}
-          >
-            <div
-              className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
-              style={{ backgroundColor: "#FEF2F2" }}
-            >
-              <TriangleAlert size={32} color="#166534" />
+          <div className="card bg-base-100 border border-base-300 p-8 text-center">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-base-300">
+              <TriangleAlert size={32} style={{ color: "#166534" }} />
             </div>
-            <h3
-              className="text-xl font-semibold mb-4"
-              style={{ color: "#0F172A" }}
-            >
+            <h3 className="text-xl font-semibold mb-4 text-base-content">
               Missed EMI & payment delays
             </h3>
-            <p
-              className="text-base leading-relaxed"
-              style={{ color: "#64748B" }}
-            >
+            <p className="text-base leading-relaxed text-base-content/70">
               Payment delays cost ₹2.5L per deal on average, damaging client relationships permanently
             </p>
           </div>
@@ -380,12 +258,7 @@ const ProblemSection = () => {
 
 const SolutionSection = () => {
   return (
-    <div
-      className="py-20 px-6"
-      style={{
-        background: "linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)",
-      }}
-    >
+    <div className="py-20 px-6 bg-base-300">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -393,7 +266,7 @@ const SolutionSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4" style={{ color: "#0F172A" }}>
+          <h2 className="text-4xl font-bold mb-4 text-base-content">
             DealSense brings clarity to your daily workflow
           </h2>
         </motion.div>
@@ -604,7 +477,7 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <div className="py-20 px-6" style={{ backgroundColor: "#F8FAFC" }}>
+    <div className="py-20 px-6 bg-base-200">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -612,10 +485,10 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4" style={{ color: "#0F172A" }}>
+          <h2 className="text-4xl font-bold mb-4 text-base-content">
             What our customers say
           </h2>
-          <p className="text-lg" style={{ color: "#64748B" }}>
+          <p className="text-lg text-base-content/70">
             Real estate professionals trust DealSense to grow their business
           </p>
         </motion.div>
@@ -627,12 +500,7 @@ const TestimonialsSection = () => {
 
 const HowItWorksSection = () => {
   return (
-    <div
-      className="py-20 px-6"
-      style={{
-        background: "linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%)",
-      }}
-    >
+    <div className="py-20 px-6 bg-base-300">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -640,7 +508,7 @@ const HowItWorksSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4" style={{ color: "#0F172A" }}>
+          <h2 className="text-4xl font-bold mb-4 text-base-content">
             How it works
           </h2>
         </motion.div>
@@ -662,19 +530,12 @@ const HowItWorksSection = () => {
               <span className="text-white font-bold text-xl">1</span>
             </div>
             <div
-              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col"
-              style={{
-                background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)",
-                border: "1px solid #CBD5E1",
-              }}
+              className="card bg-base-100 border border-base-300 p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col"
             >
-              <h3
-                className="text-lg font-semibold mb-3"
-                style={{ color: "#0F172A" }}
-              >
+              <h3 className="text-lg font-semibold mb-3 text-base-content">
                 Add a lead
               </h3>
-              <p className="text-sm flex-1" style={{ color: "#64748B" }}>
+              <p className="text-sm flex-1 text-base-content/70">
                 Capture lead details and preferences with intelligent categorization
               </p>
             </div>
@@ -690,20 +551,11 @@ const HowItWorksSection = () => {
             >
               <span className="text-white font-bold text-xl">2</span>
             </div>
-            <div
-              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col"
-              style={{
-                background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)",
-                border: "1px solid #CBD5E1",
-              }}
-            >
-              <h3
-                className="text-lg font-semibold mb-3"
-                style={{ color: "#0F172A" }}
-              >
+            <div className="card bg-base-100 border border-base-300 p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col">
+              <h3 className="text-lg font-semibold mb-3 text-base-content">
                 Schedule follow-ups
               </h3>
-              <p className="text-sm flex-1" style={{ color: "#64748B" }}>
+              <p className="text-sm flex-1 text-base-content/70">
                 Set automated reminders and track all customer interactions
               </p>
             </div>
@@ -719,20 +571,11 @@ const HowItWorksSection = () => {
             >
               <span className="text-white font-bold text-xl">3</span>
             </div>
-            <div
-              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col"
-              style={{
-                background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)",
-                border: "1px solid #CBD5E1",
-              }}
-            >
-              <h3
-                className="text-lg font-semibold mb-3"
-                style={{ color: "#0F172A" }}
-              >
+            <div className="card bg-base-100 border border-base-300 p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col">
+              <h3 className="text-lg font-semibold mb-3 text-base-content">
                 Track quotations & responses
               </h3>
-              <p className="text-sm flex-1" style={{ color: "#64748B" }}>
+              <p className="text-sm flex-1 text-base-content/70">
                 Monitor customer interest and feedback in real-time
               </p>
             </div>
@@ -748,20 +591,11 @@ const HowItWorksSection = () => {
             >
               <span className="text-white font-bold text-xl">4</span>
             </div>
-            <div
-              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col"
-              style={{
-                background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)",
-                border: "1px solid #CBD5E1",
-              }}
-            >
-              <h3
-                className="text-lg font-semibold mb-3"
-                style={{ color: "#0F172A" }}
-              >
+            <div className="card bg-base-100 border border-base-300 p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col">
+              <h3 className="text-lg font-semibold mb-3 text-base-content">
                 Monitor payments & risks
               </h3>
-              <p className="text-sm flex-1" style={{ color: "#64748B" }}>
+              <p className="text-sm flex-1 text-base-content/70">
                 Stay ahead of payment schedules and potential defaults
               </p>
             </div>
@@ -774,7 +608,7 @@ const HowItWorksSection = () => {
 
 const FeatureComparisonSection = () => {
   return (
-    <div className="py-20 px-6" style={{ backgroundColor: "#FFFFFF" }}>
+    <div className="py-20 px-6 bg-base-100">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -782,10 +616,10 @@ const FeatureComparisonSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4" style={{ color: "#0F172A" }}>
+          <h2 className="text-4xl font-bold mb-4 text-base-content">
             DealSense vs Traditional Methods
           </h2>
-          <p className="text-lg" style={{ color: "#64748B" }}>
+          <p className="text-lg text-base-content/70">
             See how DealSense transforms your real estate operations
           </p>
         </motion.div>
@@ -793,42 +627,42 @@ const FeatureComparisonSection = () => {
         <div className="overflow-x-auto">
           <table className="w-full border-collapse">
             <thead>
-              <tr style={{ backgroundColor: "#F8FAFC" }}>
-                <th className="text-left p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Feature</th>
-                <th className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>DealSense</th>
-                <th className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#64748B" }}>WhatsApp + Excel</th>
+              <tr className="bg-base-200">
+                <th className="text-left p-4 border-b border-base-300 text-base-content">Feature</th>
+                <th className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>DealSense</th>
+                <th className="text-center p-4 border-b border-base-300 text-base-content/70">WhatsApp + Excel</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Lead Organization</td>
-                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>✓ Automated</td>
-                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#DC2626" }}>✗ Manual</td>
+                <td className="p-4 border-b border-base-300 text-base-content">Lead Organization</td>
+                <td className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>✓ Automated</td>
+                <td className="text-center p-4 border-b border-base-300 text-error">✗ Manual</td>
               </tr>
-              <tr style={{ backgroundColor: "#F8FAFC" }}>
-                <td className="p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Follow-up Reminders</td>
-                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>✓ Smart Alerts</td>
-                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#DC2626" }}>✗ Memory Based</td>
-              </tr>
-              <tr>
-                <td className="p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Quotation Tracking</td>
-                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>✓ Real-time Status</td>
-                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#DC2626" }}>✗ Lost in Chats</td>
-              </tr>
-              <tr style={{ backgroundColor: "#F8FAFC" }}>
-                <td className="p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Payment Alerts</td>
-                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>✓ Proactive Warnings</td>
-                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#DC2626" }}>✗ Reactive Only</td>
+              <tr className="bg-base-200">
+                <td className="p-4 border-b border-base-300 text-base-content">Follow-up Reminders</td>
+                <td className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>✓ Smart Alerts</td>
+                <td className="text-center p-4 border-b border-base-300 text-error">✗ Memory Based</td>
               </tr>
               <tr>
-                <td className="p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Time Saved Weekly</td>
-                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>5+ Hours</td>
-                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#DC2626" }}>0 Hours</td>
+                <td className="p-4 border-b border-base-300 text-base-content">Quotation Tracking</td>
+                <td className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>✓ Real-time Status</td>
+                <td className="text-center p-4 border-b border-base-300 text-error">✗ Lost in Chats</td>
               </tr>
-              <tr style={{ backgroundColor: "#F8FAFC" }}>
-                <td className="p-4" style={{ color: "#0F172A" }}>Lead Conversion Rate</td>
+              <tr className="bg-base-200">
+                <td className="p-4 border-b border-base-300 text-base-content">Payment Alerts</td>
+                <td className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>✓ Proactive Warnings</td>
+                <td className="text-center p-4 border-b border-base-300 text-error">✗ Reactive Only</td>
+              </tr>
+              <tr>
+                <td className="p-4 border-b border-base-300 text-base-content">Time Saved Weekly</td>
+                <td className="text-center p-4 border-b border-base-300" style={{ color: "#166534" }}>5+ Hours</td>
+                <td className="text-center p-4 border-b border-base-300 text-error">0 Hours</td>
+              </tr>
+              <tr className="bg-base-200">
+                <td className="p-4 text-base-content">Lead Conversion Rate</td>
                 <td className="text-center p-4" style={{ color: "#166534" }}>+40% Increase</td>
-                <td className="text-center p-4" style={{ color: "#DC2626" }}>Baseline</td>
+                <td className="text-center p-4 text-error">Baseline</td>
               </tr>
             </tbody>
           </table>
@@ -840,7 +674,7 @@ const FeatureComparisonSection = () => {
 
 const FAQSection = () => {
   return (
-    <div className="py-20 px-6" style={{ backgroundColor: "#F8FAFC" }}>
+    <div className="py-20 px-6 bg-base-200">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -848,70 +682,70 @@ const FAQSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4" style={{ color: "#0F172A" }}>
+          <h2 className="text-4xl font-bold mb-4 text-base-content">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg" style={{ color: "#64748B" }}>
+          <p className="text-lg text-base-content/70">
             Everything you need to know about DealSense
           </p>
         </motion.div>
 
         <div className="space-y-4">
-          <div className="collapse collapse-arrow bg-white border border-gray-200 rounded-lg">
+          <div className="collapse collapse-arrow bg-base-100 border border-base-300 rounded-lg">
             <input type="checkbox" className="peer" />
-            <div className="collapse-title text-lg font-semibold peer-checked:bg-gray-50" style={{ color: "#0F172A" }}>
+            <div className="collapse-title text-lg font-semibold peer-checked:bg-base-200 text-base-content">
               How quickly can I set up DealSense?
             </div>
             <div className="collapse-content">
-              <p className="text-sm pt-2" style={{ color: "#64748B" }}>
+              <p className="text-sm pt-2 text-base-content/70">
                 DealSense can be set up in under 15 minutes. Simply create your account, import your existing leads, and start managing your pipeline immediately.
               </p>
             </div>
           </div>
           
-          <div className="collapse collapse-arrow bg-white border border-gray-200 rounded-lg">
+          <div className="collapse collapse-arrow bg-base-100 border border-base-300 rounded-lg">
             <input type="checkbox" className="peer" />
-            <div className="collapse-title text-lg font-semibold peer-checked:bg-gray-50" style={{ color: "#0F172A" }}>
+            <div className="collapse-title text-lg font-semibold peer-checked:bg-base-200 text-base-content">
               Can I import my existing leads from Excel?
             </div>
             <div className="collapse-content">
-              <p className="text-sm pt-2" style={{ color: "#64748B" }}>
+              <p className="text-sm pt-2 text-base-content/70">
                 Yes, DealSense supports bulk import from Excel files. You can upload your existing lead database and all information will be automatically organized.
               </p>
             </div>
           </div>
           
-          <div className="collapse collapse-arrow bg-white border border-gray-200 rounded-lg">
+          <div className="collapse collapse-arrow bg-base-100 border border-base-300 rounded-lg">
             <input type="checkbox" className="peer" />
-            <div className="collapse-title text-lg font-semibold peer-checked:bg-gray-50" style={{ color: "#0F172A" }}>
+            <div className="collapse-title text-lg font-semibold peer-checked:bg-base-200 text-base-content">
               How does the payment alert system work?
             </div>
             <div className="collapse-content">
-              <p className="text-sm pt-2" style={{ color: "#64748B" }}>
+              <p className="text-sm pt-2 text-base-content/70">
                 DealSense monitors all payment schedules and sends automated alerts 7, 3, and 1 day before due dates. You'll never miss a payment deadline again.
               </p>
             </div>
           </div>
           
-          <div className="collapse collapse-arrow bg-white border border-gray-200 rounded-lg">
+          <div className="collapse collapse-arrow bg-base-100 border border-base-300 rounded-lg">
             <input type="checkbox" className="peer" />
-            <div className="collapse-title text-lg font-semibold peer-checked:bg-gray-50" style={{ color: "#0F172A" }}>
+            <div className="collapse-title text-lg font-semibold peer-checked:bg-base-200 text-base-content">
               Is my data secure with DealSense?
             </div>
             <div className="collapse-content">
-              <p className="text-sm pt-2" style={{ color: "#64748B" }}>
+              <p className="text-sm pt-2 text-base-content/70">
                 Absolutely. We use bank-grade encryption and secure cloud storage. Your data is backed up daily and protected with industry-standard security measures.
               </p>
             </div>
           </div>
           
-          <div className="collapse collapse-arrow bg-white border border-gray-200 rounded-lg">
+          <div className="collapse collapse-arrow bg-base-100 border border-base-300 rounded-lg">
             <input type="checkbox" className="peer" />
-            <div className="collapse-title text-lg font-semibold peer-checked:bg-gray-50" style={{ color: "#0F172A" }}>
+            <div className="collapse-title text-lg font-semibold peer-checked:bg-base-200 text-base-content">
               Can multiple team members use the same account?
             </div>
             <div className="collapse-content">
-              <p className="text-sm pt-2" style={{ color: "#64748B" }}>
+              <p className="text-sm pt-2 text-base-content/70">
                 Yes, DealSense supports team collaboration. You can add team members, assign leads, and track performance across your entire real estate team.
               </p>
             </div>
@@ -971,34 +805,22 @@ const CTASection = () => {
 
 const Footer = () => {
   return (
-    <footer
-      className="py-12 px-6"
-      style={{ backgroundColor: "#F8FAFC", borderTop: "1px solid #E2E8F0" }}
-    >
+    <footer className="py-12 px-6 bg-base-200 border-t border-base-300">
       <div className="max-w-6xl mx-auto text-center">
         <div className="flex items-center justify-center gap-3 mb-4">
-          <div
-            className="w-8 h-8 rounded-md flex items-center justify-center"
-            style={{ backgroundColor: "#166534" }}
-          >
-            <span
-              className="w-10 h-9 rounded-md flex items-center justify-center"
-              style={{ backgroundColor: "#166534" }}
-            >
+          <div className="w-8 h-8 rounded-md flex items-center justify-center" style={{ backgroundColor: "#166534" }}>
+            <span className="w-10 h-9 rounded-md flex items-center justify-center" style={{ backgroundColor: "#166534" }}>
               <MapPinHouse size={24} color="#FFFFFF" />
             </span>
           </div>
-          <h3 className="text-xl font-bold" style={{ color: "#0F172A" }}>
+          <h3 className="text-xl font-bold text-base-content">
             DealSense
           </h3>
         </div>
-        <p className="text-base mb-6" style={{ color: "#64748B" }}>
+        <p className="text-base mb-6 text-base-content/70">
           A real estate workflow management system
         </p>
-        <div
-          className="flex items-center justify-center gap-6 text-sm"
-          style={{ color: "#64748B" }}
-        >
+        <div className="flex items-center justify-center gap-6 text-sm text-base-content/70">
           <a
             href="https://github.com/Rishitgoyal06/DealSense"
             className="hover:underline transition-colors duration-200"

@@ -8,6 +8,7 @@ import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import ThemeToggle from "@/components/ThemeToggle";
 
 interface LoginFormData {
   email: string;
@@ -57,9 +58,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex" style={{ background: "linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%)" }}>
+    <div className="min-h-screen flex bg-base-200">
       {/* Left Side - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 items-center justify-center p-12" style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E293B 100%)" }}>
+      <div className="hidden lg:flex lg:w-1/2 items-center justify-center p-12" style={{ backgroundColor: "#166534" }}>
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -67,36 +68,39 @@ export default function LoginPage() {
           className="text-center"
         >
           <div className="flex items-center justify-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#166534" }}>
-              <MapPinHouse size={32} color="#FFFFFF" />
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-white">
+              <MapPinHouse size={32} style={{ color: "#166534" }} />
             </div>
-            <h1 className="text-3xl font-bold" style={{ color: "#FFFFFF" }}>DealSense</h1>
+            <h1 className="text-3xl font-bold text-white">DealSense</h1>
           </div>
-          <h2 className="text-2xl font-semibold mb-4" style={{ color: "#FFFFFF" }}>Welcome back!</h2>
-          <p className="text-lg" style={{ color: "#94A3B8" }}>Sign in to manage your real estate deals efficiently</p>
+          <h2 className="text-2xl font-semibold mb-4 text-white">Welcome back!</h2>
+          <p className="text-lg text-white/70">Sign in to manage your real estate deals efficiently</p>
         </motion.div>
       </div>
 
       {/* Right Side - Login Form */}
-      <div className="flex-1 flex items-center justify-center p-8">
+      <div className="flex-1 flex items-center justify-center p-8 relative">
+        <div className="absolute top-4 right-4">
+          <ThemeToggle />
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="w-full max-w-md"
         >
-          <Card className="shadow-xl" style={{ border: "1px solid #E2E8F0" }}>
+          <Card className="card bg-base-100 shadow-xl">
             {/* Mobile Logo */}
             <div className="lg:hidden flex items-center justify-center gap-3 pt-8">
               <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#166534" }}>
-                <MapPinHouse size={24} color="#FFFFFF" />
+                <MapPinHouse size={24} className="text-white" />
               </div>
-              <h1 className="text-2xl font-bold" style={{ color: "#0F172A" }}>DealSense</h1>
+              <h1 className="text-2xl font-bold text-base-content">DealSense</h1>
             </div>
 
             <CardHeader className="text-center">
-              <CardTitle style={{ color: "#0F172A" }}>Sign In</CardTitle>
-              <CardDescription style={{ color: "#64748B" }}>
+              <CardTitle className="text-base-content">Sign In</CardTitle>
+              <CardDescription className="text-base-content/70">
                 Enter your credentials to access your account
               </CardDescription>
             </CardHeader>
@@ -104,14 +108,14 @@ export default function LoginPage() {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 {error && (
-                  <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
-                    {error}
+                  <div className="alert alert-error">
+                    <span>{error}</span>
                   </div>
                 )}
 
                 <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm font-medium" style={{ color: "#0F172A" }}>
-                    Email Address
+                  <label htmlFor="email" className="label">
+                    <span className="label-text">Email Address</span>
                   </label>
                   <Input
                     id="email"
@@ -121,13 +125,13 @@ export default function LoginPage() {
                     placeholder="Enter your email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="h-12"
+                    className="input input-bordered w-full"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="password" className="block text-sm font-medium" style={{ color: "#0F172A" }}>
-                    Password
+                  <label htmlFor="password" className="label">
+                    <span className="label-text">Password</span>
                   </label>
                   <div className="relative">
                     <Input
@@ -138,17 +142,17 @@ export default function LoginPage() {
                       placeholder="Enter your password"
                       value={formData.password}
                       onChange={handleInputChange}
-                      className="h-12 pr-12"
+                      className="input input-bordered w-full pr-12"
                     />
                     <button
                       type="button"
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 btn btn-ghost btn-sm btn-circle"
                       onClick={() => setShowPassword(!showPassword)}
                     >
                       {showPassword ? (
-                        <EyeOff size={20} style={{ color: "#64748B" }} />
+                        <EyeOff size={20} />
                       ) : (
-                        <Eye size={20} style={{ color: "#64748B" }} />
+                        <Eye size={20} />
                       )}
                     </button>
                   </div>
@@ -157,20 +161,17 @@ export default function LoginPage() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full h-12 font-semibold"
-                  style={{
-                    background: "linear-gradient(135deg, #166534 0%, #14532D 100%)",
-                    color: "#FFFFFF",
-                  }}
+                  className="w-full"
+                  style={{ backgroundColor: "#166534", color: "white" }}
                 >
                   {isLoading ? "Signing in..." : "Sign In"}
                 </Button>
               </form>
 
               <div className="mt-6 text-center">
-                <p className="text-sm" style={{ color: "#64748B" }}>
+                <p className="text-sm text-base-content/70">
                   Don't have an account?{" "}
-                  <Link href="/register" className="font-medium hover:underline" style={{ color: "#166534" }}>
+                  <Link href="/register" className="link" style={{ color: "#166534" }}>
                     Sign up
                   </Link>
                 </p>
