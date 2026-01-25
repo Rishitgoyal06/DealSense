@@ -1,6 +1,22 @@
 "use client";
 
 import { motion } from "motion/react";
+import {
+  BarChart3,
+  CircleCheck,
+  Clock,
+  TabletSmartphone,
+  Brain,
+  TriangleAlert,
+  MapPinHouse,
+  Users,
+  Calendar,
+  FileText,
+  CreditCard,
+  TrendingUp,
+  Star,
+  Quote,
+} from "lucide-react";
 
 export default function Home() {
   return (
@@ -8,6 +24,7 @@ export default function Home() {
       <HeroSectionOne />
       <ProblemSection />
       <SolutionSection />
+      <TestimonialsSection />
       <HowItWorksSection />
       <CTASection />
       <Footer />
@@ -103,20 +120,7 @@ export function HeroSectionOne() {
                   className="w-12 h-12 rounded-lg flex items-center justify-center mb-6"
                   style={{ backgroundColor: "#F1F5F9" }}
                 >
-                  <svg
-                    className="w-6 h-6"
-                    style={{ color: "#166534" }}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
+                  <BarChart3 className="w-6 h-6" style={{ color: "#166534" }} />
                 </div>
                 <h3
                   className="text-xl font-semibold mb-3"
@@ -141,20 +145,7 @@ export function HeroSectionOne() {
                   className="w-12 h-12 rounded-lg flex items-center justify-center mb-6"
                   style={{ backgroundColor: "#F1F5F9" }}
                 >
-                  <svg
-                    className="w-6 h-6"
-                    style={{ color: "#166534" }}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  <Clock color="#166534" />
                 </div>
                 <h3
                   className="text-xl font-semibold mb-3"
@@ -179,20 +170,7 @@ export function HeroSectionOne() {
                   className="w-12 h-12 rounded-lg flex items-center justify-center mb-6"
                   style={{ backgroundColor: "#F1F5F9" }}
                 >
-                  <svg
-                    className="w-6 h-6"
-                    style={{ color: "#166534" }}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  <CircleCheck color="#166534" />
                 </div>
                 <h3
                   className="text-xl font-semibold mb-3"
@@ -238,12 +216,10 @@ const Navbar = () => {
     >
       <div className="flex items-center gap-3">
         <div
-          className="w-8 h-8 rounded-md flex items-center justify-center"
+          className="w-10 h-10 rounded-md flex items-center justify-center"
           style={{ backgroundColor: "#166534" }}
         >
-          <span className="font-bold text-sm" style={{ color: "#FFFFFF" }}>
-            D
-          </span>
+          <MapPinHouse size={28} color="#FFFFFF" />
         </div>
         <h1
           className="text-xl font-bold md:text-2xl"
@@ -303,7 +279,7 @@ const ProblemSection = () => {
               className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
               style={{ backgroundColor: "#FEF2F2" }}
             >
-              <span className="text-2xl">📱</span>
+              <TabletSmartphone size={32} color="#166534" />
             </div>
             <h3
               className="text-xl font-semibold mb-4"
@@ -328,7 +304,7 @@ const ProblemSection = () => {
               className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
               style={{ backgroundColor: "#FEF2F2" }}
             >
-              <span className="text-2xl">🧠</span>
+              <Brain size={32} color="#166534" />
             </div>
             <h3
               className="text-xl font-semibold mb-4"
@@ -353,7 +329,7 @@ const ProblemSection = () => {
               className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
               style={{ backgroundColor: "#FEF2F2" }}
             >
-              <span className="text-2xl">⚠️</span>
+              <TriangleAlert size={32} color="#166534" />
             </div>
             <h3
               className="text-xl font-semibold mb-4"
@@ -415,7 +391,7 @@ const SolutionSection = () => {
                 boxShadow: "0 4px 14px 0 rgba(22, 101, 52, 0.25)",
               }}
             >
-              <span className="text-xl text-white">✅</span>
+              <Users size={24} color="#FFFFFF" />
             </div>
             <div>
               <h3
@@ -445,7 +421,7 @@ const SolutionSection = () => {
                 boxShadow: "0 4px 14px 0 rgba(59, 130, 246, 0.25)",
               }}
             >
-              <span className="text-xl text-white">📞</span>
+              <Calendar size={24} color="#FFFFFF" />
             </div>
             <div>
               <h3
@@ -474,7 +450,7 @@ const SolutionSection = () => {
                 boxShadow: "0 4px 14px 0 rgba(245, 158, 11, 0.25)",
               }}
             >
-              <span className="text-xl text-white">📄</span>
+              <FileText size={24} color="#FFFFFF" />
             </div>
             <div>
               <h3
@@ -504,7 +480,7 @@ const SolutionSection = () => {
                 boxShadow: "0 4px 14px 0 rgba(239, 68, 68, 0.25)",
               }}
             >
-              <span className="text-xl text-white">💰</span>
+              <CreditCard size={24} color="#FFFFFF" />
             </div>
             <div>
               <h3
@@ -533,7 +509,7 @@ const SolutionSection = () => {
                 boxShadow: "0 4px 14px 0 rgba(139, 92, 246, 0.25)",
               }}
             >
-              <span className="text-xl text-white">📊</span>
+              <TrendingUp size={24} color="#FFFFFF" />
             </div>
             <div>
               <h3
@@ -549,6 +525,104 @@ const SolutionSection = () => {
             </div>
           </div>
         </motion.div>
+      </div>
+    </div>
+  );
+};
+
+const TestimonialsSection = () => {
+  return (
+    <div className="py-20 px-6" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold mb-4" style={{ color: "#0F172A" }}>
+            Trusted by real estate professionals
+          </h2>
+          <p className="text-lg" style={{ color: "#64748B" }}>
+            See how DealSense is transforming real estate operations
+          </p>
+        </motion.div>
+
+        <div className="relative overflow-hidden">
+          <motion.div
+            className="flex gap-6"
+            animate={{
+              x: ["-100%", "0%"],
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 20,
+                ease: "linear",
+              },
+            }}
+          >
+            {[
+              { name: "Rajesh Sharma", role: "Senior Real Estate Broker, Mumbai", initials: "RS", text: "DealSense completely transformed how I manage my leads. I went from losing 30% of potential deals to closing 85% more transactions." },
+              { name: "Priya Kapoor", role: "Real Estate Consultant, Delhi", initials: "PK", text: "Before DealSense, I was managing everything on WhatsApp and Excel. Now I have complete visibility into my pipeline." },
+              { name: "Amit Mehta", role: "Property Dealer, Bangalore", initials: "AM", text: "The quotation tracking feature saved my business. My conversion rate doubled with DealSense." },
+              { name: "Sunita Gupta", role: "Real Estate Agent, Pune", initials: "SG", text: "DealSense helped me organize my entire business. The payment alerts saved me from multiple defaults." },
+              { name: "Vikram Singh", role: "Property Consultant, Gurgaon", initials: "VS", text: "My lead conversion improved by 60% and I never miss important follow-ups anymore." },
+              { name: "Neha Agarwal", role: "Real Estate Broker, Hyderabad", initials: "NA", text: "The best investment I made for my real estate business. DealSense keeps me organized." }
+            ].concat([
+              { name: "Rajesh Sharma", role: "Senior Real Estate Broker, Mumbai", initials: "RS", text: "DealSense completely transformed how I manage my leads. I went from losing 30% of potential deals to closing 85% more transactions." },
+              { name: "Priya Kapoor", role: "Real Estate Consultant, Delhi", initials: "PK", text: "Before DealSense, I was managing everything on WhatsApp and Excel. Now I have complete visibility into my pipeline." },
+              { name: "Amit Mehta", role: "Property Dealer, Bangalore", initials: "AM", text: "The quotation tracking feature saved my business. My conversion rate doubled with DealSense." },
+              { name: "Sunita Gupta", role: "Real Estate Agent, Pune", initials: "SG", text: "DealSense helped me organize my entire business. The payment alerts saved me from multiple defaults." },
+              { name: "Vikram Singh", role: "Property Consultant, Gurgaon", initials: "VS", text: "My lead conversion improved by 60% and I never miss important follow-ups anymore." },
+              { name: "Neha Agarwal", role: "Real Estate Broker, Hyderabad", initials: "NA", text: "The best investment I made for my real estate business. DealSense keeps me organized." }
+            ]).map((testimonial, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-80 p-8 rounded-xl shadow-lg"
+                style={{
+                  background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)",
+                  border: "1px solid #E2E8F0",
+                }}
+              >
+                <div className="flex items-center mb-4">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      size={20}
+                      fill="#F59E0B"
+                      color="#F59E0B"
+                    />
+                  ))}
+                </div>
+                <Quote size={24} color="#166534" className="mb-4" />
+                <p
+                  className="text-base mb-6 leading-relaxed"
+                  style={{ color: "#64748B" }}
+                >
+                  "{testimonial.text}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: "#166534" }}
+                  >
+                    <span className="text-white font-semibold">{testimonial.initials}</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold" style={{ color: "#0F172A" }}>
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-sm" style={{ color: "#64748B" }}>
+                      {testimonial.role}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </div>
   );
@@ -578,9 +652,9 @@ const HowItWorksSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-4 gap-8 items-stretch"
         >
-          <div className="text-center">
+          <div className="text-center flex flex-col">
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
               style={{
@@ -591,7 +665,7 @@ const HowItWorksSection = () => {
               <span className="text-white font-bold text-xl">1</span>
             </div>
             <div
-              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col"
               style={{
                 background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)",
                 border: "1px solid #CBD5E1",
@@ -603,13 +677,13 @@ const HowItWorksSection = () => {
               >
                 Add a lead
               </h3>
-              <p className="text-sm" style={{ color: "#64748B" }}>
-                Capture lead details and preferences
+              <p className="text-sm flex-1" style={{ color: "#64748B" }}>
+                Capture lead details and preferences with intelligent categorization
               </p>
             </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center flex flex-col">
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
               style={{
@@ -620,7 +694,7 @@ const HowItWorksSection = () => {
               <span className="text-white font-bold text-xl">2</span>
             </div>
             <div
-              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col"
               style={{
                 background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)",
                 border: "1px solid #CBD5E1",
@@ -632,13 +706,13 @@ const HowItWorksSection = () => {
               >
                 Schedule follow-ups
               </h3>
-              <p className="text-sm" style={{ color: "#64748B" }}>
-                Set reminders and track interactions
+              <p className="text-sm flex-1" style={{ color: "#64748B" }}>
+                Set automated reminders and track all customer interactions
               </p>
             </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center flex flex-col">
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
               style={{
@@ -649,7 +723,7 @@ const HowItWorksSection = () => {
               <span className="text-white font-bold text-xl">3</span>
             </div>
             <div
-              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col"
               style={{
                 background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)",
                 border: "1px solid #CBD5E1",
@@ -661,13 +735,13 @@ const HowItWorksSection = () => {
               >
                 Track quotations & responses
               </h3>
-              <p className="text-sm" style={{ color: "#64748B" }}>
-                Monitor customer interest and feedback
+              <p className="text-sm flex-1" style={{ color: "#64748B" }}>
+                Monitor customer interest and feedback in real-time
               </p>
             </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center flex flex-col">
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
               style={{
@@ -678,7 +752,7 @@ const HowItWorksSection = () => {
               <span className="text-white font-bold text-xl">4</span>
             </div>
             <div
-              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex-1 flex flex-col"
               style={{
                 background: "linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)",
                 border: "1px solid #CBD5E1",
@@ -690,8 +764,8 @@ const HowItWorksSection = () => {
               >
                 Monitor payments & risks
               </h3>
-              <p className="text-sm" style={{ color: "#64748B" }}>
-                Stay ahead of payment schedules
+              <p className="text-sm flex-1" style={{ color: "#64748B" }}>
+                Stay ahead of payment schedules and potential defaults
               </p>
             </div>
           </div>
@@ -760,8 +834,11 @@ const Footer = () => {
             className="w-8 h-8 rounded-md flex items-center justify-center"
             style={{ backgroundColor: "#166534" }}
           >
-            <span className="font-bold text-sm" style={{ color: "#FFFFFF" }}>
-              D
+            <span
+              className="w-10 h-9 rounded-md flex items-center justify-center"
+              style={{ backgroundColor: "#166534" }}
+            >
+              <MapPinHouse size={24} color="#FFFFFF" />
             </span>
           </div>
           <h3 className="text-xl font-bold" style={{ color: "#0F172A" }}>
