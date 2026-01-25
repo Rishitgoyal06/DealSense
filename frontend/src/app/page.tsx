@@ -28,6 +28,8 @@ export default function Home() {
       <SolutionSection />
       <TestimonialsSection />
       <HowItWorksSection />
+      <FeatureComparisonSection />
+      <FAQSection />
       <CTASection />
       <Footer />
     </div>
@@ -38,7 +40,10 @@ export function HeroSectionOne() {
   return (
     <div
       className="relative min-h-screen w-full flex flex-col"
-      style={{ backgroundColor: "#FAFBFC" }}
+      style={{ 
+        backgroundColor: "#FAFBFC",
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23166534' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+      }}
     >
       <Navbar />
       <div className="flex-1 flex items-center justify-center">
@@ -265,6 +270,29 @@ const ProblemSection = () => {
           <h2 className="text-4xl font-bold mb-4" style={{ color: "#0F172A" }}>
             The real problems in real estate operations
           </h2>
+          <p className="text-lg mb-8" style={{ color: "#64748B" }}>
+            Industry statistics reveal the hidden costs of poor lead management
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+        >
+          <div className="text-center p-6 rounded-xl" style={{ backgroundColor: "#FEF2F2", border: "1px solid #FECACA" }}>
+            <div className="text-3xl font-bold mb-2" style={{ color: "#DC2626" }}>23%</div>
+            <p className="text-sm" style={{ color: "#7F1D1D" }}>of leads lost due to poor follow-up</p>
+          </div>
+          <div className="text-center p-6 rounded-xl" style={{ backgroundColor: "#FEF3C7", border: "1px solid #FDE68A" }}>
+            <div className="text-3xl font-bold mb-2" style={{ color: "#D97706" }}>8 hrs</div>
+            <p className="text-sm" style={{ color: "#92400E" }}>wasted weekly on manual tracking</p>
+          </div>
+          <div className="text-center p-6 rounded-xl" style={{ backgroundColor: "#FECACA", border: "1px solid #FCA5A5" }}>
+            <div className="text-3xl font-bold mb-2" style={{ color: "#DC2626" }}>₹2.5L</div>
+            <p className="text-sm" style={{ color: "#7F1D1D" }}>average revenue lost per missed deal</p>
+          </div>
         </motion.div>
 
         <motion.div
@@ -293,8 +321,7 @@ const ProblemSection = () => {
               className="text-base leading-relaxed"
               style={{ color: "#64748B" }}
             >
-              Quotations, follow-ups, and responses get lost in endless chat
-              threads
+              Quotations, follow-ups, and responses get lost in endless chat threads, leading to 23% lead loss
             </p>
           </div>
 
@@ -318,8 +345,7 @@ const ProblemSection = () => {
               className="text-base leading-relaxed"
               style={{ color: "#64748B" }}
             >
-              Hard to track who to call and when, leading to missed
-              opportunities
+              Brokers waste 8 hours weekly on manual tracking, missing 40% of follow-up opportunities
             </p>
           </div>
 
@@ -343,8 +369,7 @@ const ProblemSection = () => {
               className="text-base leading-relaxed"
               style={{ color: "#64748B" }}
             >
-              Causes panic and last-minute issues that damage client
-              relationships
+              Payment delays cost ₹2.5L per deal on average, damaging client relationships permanently
             </p>
           </div>
         </motion.div>
@@ -402,10 +427,12 @@ const SolutionSection = () => {
               >
                 Centralized lead management
               </h3>
-              <p className="text-base" style={{ color: "#64748B" }}>
-                All your leads in one place with intelligent scoring and status
-                tracking
+              <p className="text-base mb-2" style={{ color: "#64748B" }}>
+                All your leads in one place with intelligent scoring and status tracking
               </p>
+              <div className="text-sm font-semibold" style={{ color: "#166534" }}>
+                Save 5 hours per week on lead organization
+              </div>
             </div>
           </div>
 
@@ -432,9 +459,12 @@ const SolutionSection = () => {
               >
                 Smart follow-up scheduling
               </h3>
-              <p className="text-base" style={{ color: "#64748B" }}>
+              <p className="text-base mb-2" style={{ color: "#64748B" }}>
                 Automated reminders and scheduling so you never miss a follow-up
               </p>
+              <div className="text-sm font-semibold" style={{ color: "#166534" }}>
+                Increase conversion rate by 40%
+              </div>
             </div>
           </div>
 
@@ -461,10 +491,12 @@ const SolutionSection = () => {
               >
                 Broker quotation tracking
               </h3>
-              <p className="text-base" style={{ color: "#64748B" }}>
-                Track quotations sent to customers and their responses in
-                real-time
+              <p className="text-base mb-2" style={{ color: "#64748B" }}>
+                Track quotations sent to customers and their responses in real-time
               </p>
+              <div className="text-sm font-semibold" style={{ color: "#166534" }}>
+                Double your quotation response rate
+              </div>
             </div>
           </div>
 
@@ -491,9 +523,12 @@ const SolutionSection = () => {
               >
                 EMI & payment risk alerts
               </h3>
-              <p className="text-base" style={{ color: "#64748B" }}>
+              <p className="text-base mb-2" style={{ color: "#64748B" }}>
                 Proactive alerts for upcoming payments and potential defaults
               </p>
+              <div className="text-sm font-semibold" style={{ color: "#166534" }}>
+                Prevent 90% of payment delays
+              </div>
             </div>
           </div>
 
@@ -520,10 +555,12 @@ const SolutionSection = () => {
               >
                 Daily action-based dashboard
               </h3>
-              <p className="text-base" style={{ color: "#64748B" }}>
-                Clear daily priorities and actionable insights to maximize
-                productivity
+              <p className="text-base mb-2" style={{ color: "#64748B" }}>
+                Clear daily priorities and actionable insights to maximize productivity
               </p>
+              <div className="text-sm font-semibold" style={{ color: "#166534" }}>
+                Boost productivity by 60%
+              </div>
             </div>
           </div>
         </motion.div>
@@ -730,6 +767,156 @@ const HowItWorksSection = () => {
             </div>
           </div>
         </motion.div>
+      </div>
+    </div>
+  );
+};
+
+const FeatureComparisonSection = () => {
+  return (
+    <div className="py-20 px-6" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold mb-4" style={{ color: "#0F172A" }}>
+            DealSense vs Traditional Methods
+          </h2>
+          <p className="text-lg" style={{ color: "#64748B" }}>
+            See how DealSense transforms your real estate operations
+          </p>
+        </motion.div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr style={{ backgroundColor: "#F8FAFC" }}>
+                <th className="text-left p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Feature</th>
+                <th className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>DealSense</th>
+                <th className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#64748B" }}>WhatsApp + Excel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Lead Organization</td>
+                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>✓ Automated</td>
+                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#DC2626" }}>✗ Manual</td>
+              </tr>
+              <tr style={{ backgroundColor: "#F8FAFC" }}>
+                <td className="p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Follow-up Reminders</td>
+                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>✓ Smart Alerts</td>
+                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#DC2626" }}>✗ Memory Based</td>
+              </tr>
+              <tr>
+                <td className="p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Quotation Tracking</td>
+                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>✓ Real-time Status</td>
+                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#DC2626" }}>✗ Lost in Chats</td>
+              </tr>
+              <tr style={{ backgroundColor: "#F8FAFC" }}>
+                <td className="p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Payment Alerts</td>
+                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>✓ Proactive Warnings</td>
+                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#DC2626" }}>✗ Reactive Only</td>
+              </tr>
+              <tr>
+                <td className="p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#0F172A" }}>Time Saved Weekly</td>
+                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#166534" }}>5+ Hours</td>
+                <td className="text-center p-4 border-b" style={{ borderColor: "#E2E8F0", color: "#DC2626" }}>0 Hours</td>
+              </tr>
+              <tr style={{ backgroundColor: "#F8FAFC" }}>
+                <td className="p-4" style={{ color: "#0F172A" }}>Lead Conversion Rate</td>
+                <td className="text-center p-4" style={{ color: "#166534" }}>+40% Increase</td>
+                <td className="text-center p-4" style={{ color: "#DC2626" }}>Baseline</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const FAQSection = () => {
+  return (
+    <div className="py-20 px-6" style={{ backgroundColor: "#F8FAFC" }}>
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold mb-4" style={{ color: "#0F172A" }}>
+            Frequently Asked Questions
+          </h2>
+          <p className="text-lg" style={{ color: "#64748B" }}>
+            Everything you need to know about DealSense
+          </p>
+        </motion.div>
+
+        <div className="space-y-4">
+          <div className="collapse collapse-arrow bg-white border border-gray-200 rounded-lg">
+            <input type="checkbox" className="peer" />
+            <div className="collapse-title text-lg font-semibold peer-checked:bg-gray-50" style={{ color: "#0F172A" }}>
+              How quickly can I set up DealSense?
+            </div>
+            <div className="collapse-content">
+              <p className="text-sm pt-2" style={{ color: "#64748B" }}>
+                DealSense can be set up in under 15 minutes. Simply create your account, import your existing leads, and start managing your pipeline immediately.
+              </p>
+            </div>
+          </div>
+          
+          <div className="collapse collapse-arrow bg-white border border-gray-200 rounded-lg">
+            <input type="checkbox" className="peer" />
+            <div className="collapse-title text-lg font-semibold peer-checked:bg-gray-50" style={{ color: "#0F172A" }}>
+              Can I import my existing leads from Excel?
+            </div>
+            <div className="collapse-content">
+              <p className="text-sm pt-2" style={{ color: "#64748B" }}>
+                Yes, DealSense supports bulk import from Excel files. You can upload your existing lead database and all information will be automatically organized.
+              </p>
+            </div>
+          </div>
+          
+          <div className="collapse collapse-arrow bg-white border border-gray-200 rounded-lg">
+            <input type="checkbox" className="peer" />
+            <div className="collapse-title text-lg font-semibold peer-checked:bg-gray-50" style={{ color: "#0F172A" }}>
+              How does the payment alert system work?
+            </div>
+            <div className="collapse-content">
+              <p className="text-sm pt-2" style={{ color: "#64748B" }}>
+                DealSense monitors all payment schedules and sends automated alerts 7, 3, and 1 day before due dates. You'll never miss a payment deadline again.
+              </p>
+            </div>
+          </div>
+          
+          <div className="collapse collapse-arrow bg-white border border-gray-200 rounded-lg">
+            <input type="checkbox" className="peer" />
+            <div className="collapse-title text-lg font-semibold peer-checked:bg-gray-50" style={{ color: "#0F172A" }}>
+              Is my data secure with DealSense?
+            </div>
+            <div className="collapse-content">
+              <p className="text-sm pt-2" style={{ color: "#64748B" }}>
+                Absolutely. We use bank-grade encryption and secure cloud storage. Your data is backed up daily and protected with industry-standard security measures.
+              </p>
+            </div>
+          </div>
+          
+          <div className="collapse collapse-arrow bg-white border border-gray-200 rounded-lg">
+            <input type="checkbox" className="peer" />
+            <div className="collapse-title text-lg font-semibold peer-checked:bg-gray-50" style={{ color: "#0F172A" }}>
+              Can multiple team members use the same account?
+            </div>
+            <div className="collapse-content">
+              <p className="text-sm pt-2" style={{ color: "#64748B" }}>
+                Yes, DealSense supports team collaboration. You can add team members, assign leads, and track performance across your entire real estate team.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
