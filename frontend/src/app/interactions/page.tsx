@@ -7,12 +7,9 @@ import { noteService, Note } from "@/services/noteService";
 import { leadService, Lead } from "@/services/leadService";
 import LoadingScreen from "@/components/LoadingScreen";
 
-interface NoteWithLead extends Note {
-  lead?: Lead;
-}
 
 export default function NotesPage() {
-  const [notes, setNotes] = useState<NoteWithLead[]>([]);
+  const [notes, setNotes] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -39,8 +36,8 @@ export default function NotesPage() {
           // Use notes directly since leadId is already populated
           const notesWithLeads = notesData.map(note => ({
             ...note,
-            lead: note.leadId // leadId is already populated with lead data
-          }));
+            lead: note.leadId
+          })) as any[];
           
           console.log('Processed notes:', notesWithLeads);
           setNotes(notesWithLeads);
