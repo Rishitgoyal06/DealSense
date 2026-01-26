@@ -130,7 +130,7 @@ export default function DashboardPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-base-100">
-        <div className="text-lg text-base-content">Loading...</div>
+        <div className="loading loading-spinner loading-lg text-primary"></div>
       </div>
     );
   }
