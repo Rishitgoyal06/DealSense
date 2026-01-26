@@ -153,20 +153,20 @@ export function HeroSectionOne() {
 
 const Navbar = () => {
   return (
-    <nav className="navbar bg-base-100 border-b border-base-300 px-20">
+    <nav className="navbar bg-base-100 border-b border-base-300 px-4 sm:px-8 lg:px-20">
       <div className="navbar-start">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-md flex items-center justify-center" style={{ backgroundColor: "#166534" }}>
-            <MapPinHouse size={28} className="text-white" />
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex items-center justify-center" style={{ backgroundColor: "#166534" }}>
+            <MapPinHouse size={20} className="text-white sm:w-7 sm:h-7" />
           </div>
-          <h1 className="text-xl font-bold md:text-2xl text-base-content">
+          <h1 className="text-lg font-bold sm:text-xl md:text-2xl text-base-content">
             DealSense
           </h1>
         </div>
       </div>
-      <div className="navbar-end gap-4">
+      <div className="navbar-end gap-2 sm:gap-4">
         <ThemeToggle />
-        <a href="/login" className="btn btn-md px-6" style={{ backgroundColor: "#166534", color: "white", fontWeight: "600" }}>
+        <a href="/login" className="btn btn-sm sm:btn-md px-3 sm:px-6 text-sm sm:text-base" style={{ backgroundColor: "#166534", color: "white", fontWeight: "600" }}>
           Login
         </a>
       </div>
