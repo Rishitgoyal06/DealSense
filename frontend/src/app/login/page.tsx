@@ -31,13 +31,18 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      console.log('Attempting login with:', formData.email);
+      console.log('API URL:', process.env.NEXT_PUBLIC_API_URL);
+      
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
+      console.log('Response status:', response.status);
       const data = await response.json();
+      console.log('Response data:', data);
 
       if (data.success) {
         localStorage.setItem('token', data.data.token);
