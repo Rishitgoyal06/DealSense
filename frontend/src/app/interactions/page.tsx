@@ -19,38 +19,25 @@ export default function NotesPage() {
 
   const fetchNotes = async () => {
     try {
-      console.log('Fetching notes...');
       const response = await noteService.getAll();
-      console.log('Notes response:', response);
       
       if (response.success) {
-        // Handle swapped data/message fields from backend
         const notesData = response.message || response.data || [];
-        console.log('Notes data:', notesData);
         
         if (Array.isArray(notesData)) {
-          console.log('Found notes:', notesData.length);
-          console.log('First note structure:', notesData[0]);
-          console.log('First note leadId:', notesData[0]?.leadId);
-          
-          // Use notes directly since leadId is already populated
           const notesWithLeads = notesData.map(note => ({
             ...note,
             lead: note.leadId
           })) as any[];
           
-          console.log('Processed notes:', notesWithLeads);
           setNotes(notesWithLeads);
         } else {
-          console.log('Notes data is not an array:', typeof notesData);
           setNotes([]);
         }
       } else {
-        console.error('Response not successful:', response);
         setNotes([]);
       }
     } catch (error: any) {
-      console.error('Fetch notes error:', error);
       setError(error.message || "Failed to fetch notes");
       setNotes([]);
     } finally {
@@ -116,7 +103,6 @@ export default function NotesPage() {
                         <h3 className="text-xl font-semibold text-base-content">
                           {note.leadId?.name || `Lead ID: ${note.leadId?._id || 'Unknown'}`}
                         </h3>
-                        <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">DEBUG: {JSON.stringify({hasLeadId: !!note.leadId, leadName: note.leadId?.name})}</span>
                         {note.leadId && (
                           <span className={`px-3 py-1 text-xs font-medium rounded-full ${
                             note.leadId.leadType === 'buy' ? 'bg-blue-100 text-blue-800' :
