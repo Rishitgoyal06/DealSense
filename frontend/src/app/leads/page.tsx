@@ -42,33 +42,35 @@ export default function LeadsPage() {
     <div className="min-h-screen bg-base-200">
       <header className="bg-base-100 shadow-lg border-b border-base-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ background: "linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)" }}>
-                <Users size={24} className="text-white" />
+          <div className="flex justify-between items-center py-4 sm:py-6">
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ background: "linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)" }}>
+                <Users size={20} className="text-white sm:w-6 sm:h-6" />
               </div>
-              <h1 className="text-3xl font-bold text-base-content">Leads</h1>
+              <h1 className="text-xl sm:text-3xl font-bold text-base-content">Leads</h1>
             </div>
-            <div className="flex space-x-3">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
               <Link
                 href="/leads/new"
-                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl flex items-center space-x-2"
+                className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-1 sm:space-x-2"
               >
-                <Plus size={16} />
-                <span>Add New Lead</span>
+                <Plus size={14} className="sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">Add New Lead</span>
+                <span className="sm:hidden">Add</span>
               </Link>
               <Link
                 href="/dashboard"
-                className="text-base-content/70 hover:text-base-content px-4 py-3 rounded-xl text-sm font-medium border border-base-300 hover:border-base-content/50 transition-all duration-200 bg-base-100 shadow-sm hover:shadow-md"
+                className="text-base-content/70 hover:text-base-content px-2 py-2 sm:px-4 sm:py-3 rounded-xl text-xs sm:text-sm font-medium border border-base-300 hover:border-base-content/50 transition-all duration-200 bg-base-100 shadow-sm hover:shadow-md text-center"
               >
-                ← Dashboard
+                <span className="hidden sm:inline">← Dashboard</span>
+                <span className="sm:hidden">←</span>
               </Link>
             </div>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <main className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
         {error && (
           <div className="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
             {error}

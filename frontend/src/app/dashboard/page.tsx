@@ -137,35 +137,37 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-gradient-to-br from-base-200 to-base-300">
       <header className="bg-base-100 shadow-lg border-b border-base-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: "#166534" }}>
-                <MapPinHouse size={24} className="text-white" />
+          <div className="flex justify-between items-center py-4 sm:py-6">
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: "#166534" }}>
+                <MapPinHouse size={20} className="text-white sm:w-6 sm:h-6" />
               </div>
-              <h1 className="text-3xl font-bold text-base-content">
+              <h1 className="text-xl sm:text-3xl font-bold text-base-content">
                 DealSense
               </h1>
             </div>
-            <div className="flex items-center space-x-4">
-              <ThemeToggle />
-              <div className="text-right">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <div className="hidden sm:block">
+                <ThemeToggle />
+              </div>
+              <div className="text-right hidden sm:block">
                 <p className="text-sm text-base-content/70">Welcome back,</p>
                 <p className="font-semibold text-base-content">{user?.name}</p>
               </div>
               <button
                 onClick={handleLogout}
-                className="btn btn-error btn-sm flex items-center gap-2"
+                className="btn btn-error btn-xs sm:btn-sm flex items-center gap-1 sm:gap-2"
               >
-                <LogOut size={16} />
-                Logout
+                <LogOut size={14} className="sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">Logout</span>
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8">
-        <div className="px-4 sm:px-0">
+      <main className="max-w-7xl mx-auto py-4 sm:py-8 px-4 sm:px-6 lg:px-8">
+        <div className="sm:px-0">
           {/* Welcome Section */}
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-2 text-base-content">Dashboard Overview</h2>
