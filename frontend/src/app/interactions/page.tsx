@@ -37,13 +37,10 @@ export default function NotesPage() {
           console.log('First note leadId:', notesData[0]?.leadId);
           
           // Use notes directly since leadId is already populated
-          const notesWithLeads = notesData.map(note => {
-            console.log('Processing note:', note);
-            return {
-              ...note,
-              lead: note.leadId // leadId is already populated with lead data
-            };
-          });
+          const notesWithLeads = notesData.map(note => ({
+            ...note,
+            lead: note.leadId // leadId is already populated with lead data
+          }));
           
           console.log('Processed notes:', notesWithLeads);
           setNotes(notesWithLeads);
