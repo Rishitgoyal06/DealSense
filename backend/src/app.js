@@ -30,6 +30,11 @@ app.use('/api/followups', followUpRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/interactions', interactionRoutes);
 
+// Keep-alive endpoint to prevent Railway sleep
+app.get('/api/ping', (req, res) => {
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 // Global error handling middleware
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
