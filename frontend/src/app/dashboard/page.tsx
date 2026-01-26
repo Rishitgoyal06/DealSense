@@ -20,6 +20,8 @@ interface DashboardStats {
   totalQuotations: number;
 }
 
+import LoadingScreen from "@/components/LoadingScreen";
+
 export default function DashboardPage() {
   const [user, setUser] = useState<User | null>(null);
   const [stats, setStats] = useState<DashboardStats>({
@@ -128,11 +130,7 @@ export default function DashboardPage() {
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-base-100">
-        <div className="loading loading-spinner loading-lg text-primary"></div>
-      </div>
-    );
+    return <LoadingScreen message="Loading dashboard..." />;
   }
 
   return (

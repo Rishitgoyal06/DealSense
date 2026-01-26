@@ -5,6 +5,8 @@ import Link from "next/link";
 import { CreditCard } from "lucide-react";
 import { paymentService, PaymentSchedule } from "@/services/paymentService";
 
+import LoadingScreen from "@/components/LoadingScreen";
+
 export default function PaymentsPage() {
   const [riskyPayments, setRiskyPayments] = useState<PaymentSchedule[]>([]);
   const [loading, setLoading] = useState(true);
@@ -37,11 +39,7 @@ export default function PaymentsPage() {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-base-100">
-        <div className="loading loading-spinner loading-lg text-primary"></div>
-      </div>
-    );
+    return <LoadingScreen message="Loading payments..." />;
   }
 
   return (

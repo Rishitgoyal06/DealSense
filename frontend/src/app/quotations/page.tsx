@@ -5,6 +5,8 @@ import Link from "next/link";
 import { FileText, Users } from "lucide-react";
 import { quotationService, Quotation } from "@/services/quotationService";
 
+import LoadingScreen from "@/components/LoadingScreen";
+
 export default function QuotationsPage() {
   const [quotations, setQuotations] = useState<Quotation[]>([]);
   const [loading, setLoading] = useState(true);
@@ -46,11 +48,7 @@ export default function QuotationsPage() {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-base-100">
-        <div className="loading loading-spinner loading-lg text-primary"></div>
-      </div>
-    );
+    return <LoadingScreen message="Loading quotations..." />;
   }
 
   return (
