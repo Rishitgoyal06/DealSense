@@ -146,13 +146,16 @@ export default function DashboardPage() {
                 DealSense
               </h1>
             </div>
-            <div className="flex items-center space-x-2 sm:space-x-4">
+            <div className="flex items-center space-x-1 sm:space-x-4">
               <div className="hidden sm:block">
                 <ThemeToggle />
               </div>
-              <div className="text-right hidden sm:block">
+              <div className="text-right hidden md:block">
                 <p className="text-sm text-base-content/70">Welcome back,</p>
                 <p className="font-semibold text-base-content">{user?.name}</p>
+              </div>
+              <div className="block sm:hidden">
+                <ThemeToggle />
               </div>
               <button
                 onClick={handleLogout}

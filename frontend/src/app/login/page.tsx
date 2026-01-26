@@ -84,8 +84,8 @@ export default function LoginPage() {
       </div>
 
       {/* Right Side - Login Form */}
-      <div className="flex-1 flex items-center justify-center p-8 relative">
-        <div className="absolute top-4 right-4">
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-8 relative">
+        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10">
           <ThemeToggle />
         </div>
         <motion.div
@@ -96,7 +96,7 @@ export default function LoginPage() {
         >
           <Card className="card bg-base-100 shadow-xl">
             {/* Mobile Logo */}
-            <div className="lg:hidden flex items-center justify-center gap-3 pt-8">
+            <div className="lg:hidden flex items-center justify-center gap-3 pt-8 pr-12">
               <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#166534" }}>
                 <MapPinHouse size={24} className="text-white" />
               </div>
