@@ -23,7 +23,7 @@ export default function NotesPage() {
   const fetchNotes = async () => {
     try {
       const response = await noteService.getAll();
-      if (response.success) {
+      if (response.success && Array.isArray(response.data)) {
         // Fetch lead details for each note
         const notesWithLeads = await Promise.all(
           response.data.map(async (note) => {
@@ -39,9 +39,14 @@ export default function NotesPage() {
           })
         );
         setNotes(notesWithLeads);
+      } else {
+        console.error('Invalid response format:', response);
+        setNotes([]);
       }
     } catch (error: any) {
+      console.error('Fetch notes error:', error);
       setError(error.message || "Failed to fetch notes");
+      setNotes([]);
     } finally {
       setLoading(false);
     }

@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { leadService } from "@/services/leadService";
 import { noteService } from "@/services/noteService";
 import { MapPinHouse, ArrowLeft, FileText } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 
-export default function NewInteractionPage() {
+function NewInteractionForm() {
   const [note, setNote] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -153,5 +153,13 @@ export default function NewInteractionPage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function NewInteractionPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-base-200 to-base-300 flex items-center justify-center"><span className="loading loading-spinner loading-lg"></span></div>}>
+      <NewInteractionForm />
+    </Suspense>
   );
 }
