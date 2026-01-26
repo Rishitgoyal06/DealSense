@@ -34,6 +34,15 @@ export default function LeadsPage() {
     }
   };
 
+  const handleStatusUpdate = async (leadId: string, newStatus: 'active' | 'negotiating' | 'closed' | 'dropped') => {
+    try {
+      await leadService.updateStatus(leadId, newStatus);
+      fetchLeads(); // Refresh the leads list
+    } catch (error: any) {
+      setError(error.message || "Failed to update lead status");
+    }
+  };
+
   if (loading) {
     return <LoadingScreen message="Loading leads..." />;
   }
@@ -155,6 +164,18 @@ export default function LeadsPage() {
                       <p className="text-xs text-base-content/50 mb-3">
                         {new Date(lead.createdAt || "").toLocaleDateString()}
                       </p>
+                      <div className="flex space-x-1">
+                        <select
+                          value={lead.status}
+                          onChange={(e) => handleStatusUpdate(lead._id!, e.target.value as any)}
+                          className="text-xs select select-bordered select-sm mb-2"
+                        >
+                          <option value="active">Active</option>
+                          <option value="negotiating">Negotiating</option>
+                          <option value="closed">Closed</option>
+                          <option value="dropped">Dropped</option>
+                        </select>
+                      </div>
                       <div className="flex space-x-1">
                         <Link
                           href={`/quotations/new?leadId=${lead._id}`}

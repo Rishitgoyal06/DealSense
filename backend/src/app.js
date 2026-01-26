@@ -9,6 +9,7 @@ import quotationRoutes from './routes/quotationRoutes.js';
 import followUpRoutes from './routes/followUpRoutes.js';
 import paymentRoutes from './routes/paymentRoutes.js';
 import interactionRoutes from './routes/interactionRoutes.js';
+import noteRoutes from './routes/noteRoutes.js';
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use('/api/quotations', quotationRoutes);
 app.use('/api/followups', followUpRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/interactions', interactionRoutes);
+app.use('/api/notes', noteRoutes);
 
 // Keep-alive endpoint to prevent Railway sleep
 app.get('/api/ping', (req, res) => {

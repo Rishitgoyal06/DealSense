@@ -53,6 +53,11 @@ class LeadService {
     const response = await api.delete(`/leads/${id}`);
     return handleApiResponse<void>(response);
   }
+
+  async updateStatus(id: string, status: 'active' | 'negotiating' | 'closed' | 'dropped'): Promise<ApiResponse<Lead>> {
+    const response = await api.patch(`/leads/${id}/status`, { status });
+    return handleApiResponse<Lead>(response);
+  }
 }
 
 export const leadService = new LeadService();

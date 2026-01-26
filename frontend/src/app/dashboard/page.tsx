@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { MapPinHouse, Users, CheckCircle, Clock, FileText, Trophy, LogOut, Plus, Briefcase, Calendar, BarChart3, CreditCard } from "lucide-react";
+import { MapPinHouse, Users, CheckCircle, Clock, FileText, Trophy, LogOut, Plus, Briefcase, Calendar, BarChart3, CreditCard, HelpCircle } from "lucide-react";
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
+import Tour from "@/components/Tour";
 
 interface User {
   id: string;
@@ -32,6 +33,7 @@ export default function DashboardPage() {
     totalQuotations: 0,
   });
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isTourOpen, setIsTourOpen] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -129,6 +131,45 @@ export default function DashboardPage() {
     router.push("/");
   };
 
+  const tourSteps = [
+    {
+      target: '[data-tour="stats"]',
+      title: 'Dashboard Stats',
+      description: 'View your key metrics at a glance - total leads, active leads, follow-ups, and deals closed.',
+      placement: 'bottom' as const,
+    },
+    {
+      target: '[data-tour="add-lead"]',
+      title: 'Add New Lead',
+      description: 'Click here to quickly add a new lead to your CRM system.',
+      placement: 'top' as const,
+    },
+    {
+      target: '[data-tour="view-leads"]',
+      title: 'View All Leads',
+      description: 'Access and manage all your existing leads from this section.',
+      placement: 'top' as const,
+    },
+    {
+      target: '[data-tour="followups"]',
+      title: 'Follow-ups',
+      description: 'Keep track of your daily follow-ups and never miss an opportunity.',
+      placement: 'top' as const,
+    },
+    {
+      target: '[data-tour="quotations"]',
+      title: 'Quotations',
+      description: 'Manage property quotations and track customer responses.',
+      placement: 'top' as const,
+    },
+    {
+      target: '[data-tour="payments"]',
+      title: 'Payment Schedules',
+      description: 'Track EMI schedules, payment due dates, and manage financial commitments.',
+      placement: 'top' as const,
+    },
+  ];
+
   if (isLoading) {
     return <LoadingScreen message="Loading dashboard..." />;
   }
@@ -147,6 +188,14 @@ export default function DashboardPage() {
               </h1>
             </div>
             <div className="flex items-center space-x-1 sm:space-x-4">
+              <button
+                onClick={() => setIsTourOpen(true)}
+                className="btn btn-ghost btn-xs sm:btn-sm flex items-center gap-1 sm:gap-2"
+                title="Take a tour"
+              >
+                <HelpCircle size={14} className="sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">Tour</span>
+              </button>
               <div className="hidden sm:block">
                 <ThemeToggle />
               </div>
@@ -178,7 +227,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5 mb-12">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5 mb-12" data-tour="stats">
             <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-32">
               <div className="card-body p-6 h-full flex items-center">
                 <div className="flex items-center w-full">
@@ -264,7 +313,7 @@ export default function DashboardPage() {
           <div className="mb-8">
             <h3 className="text-xl font-bold mb-4 text-base-content">Quick Actions</h3>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              <Link href="/leads/new" className="group">
+              <Link href="/leads/new" className="group" data-tour="add-lead">
                 <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-50">
                   <div className="card-body p-6">
                     <div className="flex items-center justify-center w-12 h-12 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300" style={{ background: "linear-gradient(135deg, #166534 0%, #14532D 100%)" }}>
@@ -276,7 +325,7 @@ export default function DashboardPage() {
                 </div>
               </Link>
 
-              <Link href="/leads" className="group">
+              <Link href="/leads" className="group" data-tour="view-leads">
                 <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-50">
                   <div className="card-body p-6">
                     <div className="flex items-center justify-center w-12 h-12 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300" style={{ background: "linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)" }}>
@@ -288,7 +337,7 @@ export default function DashboardPage() {
                 </div>
               </Link>
 
-              <Link href="/followups" className="group">
+              <Link href="/followups" className="group" data-tour="followups">
                 <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-50">
                   <div className="card-body p-6">
                     <div className="flex items-center justify-center w-12 h-12 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300" style={{ background: "linear-gradient(135deg, #F59E0B 0%, #D97706 100%)" }}>
@@ -300,7 +349,7 @@ export default function DashboardPage() {
                 </div>
               </Link>
 
-              <Link href="/quotations" className="group">
+              <Link href="/quotations" className="group" data-tour="quotations">
                 <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-50">
                   <div className="card-body p-6">
                     <div className="flex items-center justify-center w-12 h-12 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300" style={{ background: "linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%)" }}>
@@ -312,7 +361,7 @@ export default function DashboardPage() {
                 </div>
               </Link>
 
-              <Link href="/payments" className="group">
+              <Link href="/payments" className="group" data-tour="payments">
                 <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-50">
                   <div className="card-body p-6">
                     <div className="flex items-center justify-center w-12 h-12 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300" style={{ background: "linear-gradient(135deg, #DC2626 0%, #B91C1C 100%)" }}>
@@ -323,10 +372,28 @@ export default function DashboardPage() {
                   </div>
                 </div>
               </Link>
+
+              <Link href="/interactions" className="group">
+                <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-50">
+                  <div className="card-body p-6">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300" style={{ background: "linear-gradient(135deg, #6B7280 0%, #4B5563 100%)" }}>
+                      <FileText size={24} className="text-white" />
+                    </div>
+                    <h4 className="font-semibold mb-2 text-base-content">View Notes</h4>
+                    <p className="text-sm text-base-content/70">Review saved lead notes</p>
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
       </main>
+      
+      <Tour
+        steps={tourSteps}
+        isOpen={isTourOpen}
+        onClose={() => setIsTourOpen(false)}
+      />
     </div>
   );
 }
