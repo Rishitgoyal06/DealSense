@@ -85,8 +85,8 @@ export default function QuotationsPage() {
               <div className="w-20 h-20 bg-gradient-to-r from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-6">
                 <FileText size={40} className="text-purple-500" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No quotations yet</h3>
-              <p className="text-gray-600 mb-6">Create quotations from the leads page.</p>
+              <h3 className="text-xl font-semibold text-base-content mb-2">No quotations yet</h3>
+              <p className="text-base-content/70 mb-6">Create quotations from the leads page.</p>
               <Link
                 href="/leads"
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
@@ -96,17 +96,17 @@ export default function QuotationsPage() {
               </Link>
             </div>
           ) : (
-            <ul className="divide-y divide-gray-100">
+            <ul className="divide-y divide-base-300">
               {quotations.map((quotation) => (
-                <li key={quotation._id} className="px-8 py-6 hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
+                <li key={quotation._id} className="px-8 py-6 hover:bg-base-200 transition-all duration-200">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-2">
-                        <h3 className="text-xl font-semibold text-gray-900">{quotation.brokerName}</h3>
-                        <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                        <span className="text-sm text-gray-500">Broker</span>
+                        <h3 className="text-xl font-semibold text-base-content">{quotation.brokerName}</h3>
+                        <div className="w-2 h-2 bg-base-content/30 rounded-full"></div>
+                        <span className="text-sm text-base-content/60">Broker</span>
                       </div>
-                      <p className="text-gray-600 mb-3">{quotation.propertySummary}</p>
+                      <p className="text-base-content/70 mb-3">{quotation.propertySummary}</p>
                       <p className="text-2xl font-bold text-green-600 mb-2">
                         ₹{quotation.quotedPrice.toLocaleString()}
                       </p>
@@ -138,7 +138,7 @@ export default function QuotationsPage() {
                         <select
                           value={quotation.customerResponse}
                           onChange={(e) => handleResponseUpdate(quotation._id!, e.target.value)}
-                          className="text-xs border border-gray-300 rounded-lg px-3 py-2 bg-white shadow-sm hover:shadow-md transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                          className="text-xs border border-base-300 rounded-lg px-3 py-2 bg-base-100 shadow-sm hover:shadow-md transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         >
                           <option value="no_response">No Response</option>
                           <option value="interested">Interested</option>

@@ -87,4 +87,18 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
+  
+  /* Fix placeholder text visibility in dark mode */
+  .input::placeholder,
+  .textarea::placeholder,
+  .select::placeholder {
+    color: hsl(var(--muted-foreground));
+    opacity: 0.7;
+  }
+  
+  [data-theme="dark"] .input::placeholder,
+  [data-theme="dark"] .textarea::placeholder,
+  [data-theme="dark"] .select::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
 }

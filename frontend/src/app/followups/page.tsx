@@ -89,8 +89,8 @@ export default function FollowUpsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No follow-ups for today</h3>
-              <p className="text-gray-600 mb-6">Schedule follow-ups from the leads page.</p>
+              <h3 className="text-xl font-semibold text-base-content mb-2">No follow-ups for today</h3>
+              <p className="text-base-content/70 mb-6">Schedule follow-ups from the leads page.</p>
               <Link
                 href="/leads"
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
@@ -100,13 +100,13 @@ export default function FollowUpsPage() {
               </Link>
             </div>
           ) : (
-            <ul className="divide-y divide-gray-100">
+            <ul className="divide-y divide-base-300">
               {followUps.map((followUp) => (
-                <li key={followUp._id} className="px-8 py-6 hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
+                <li key={followUp._id} className="px-8 py-6 hover:bg-base-200 transition-all duration-200">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
-                        <h3 className="text-xl font-semibold text-gray-900">
+                        <h3 className="text-xl font-semibold text-base-content">
                           {followUp.lead ? followUp.lead.name : `Lead ID: ${followUp.leadId}`}
                         </h3>
                         <span className={`px-3 py-1 text-xs font-medium rounded-full ${
@@ -116,7 +116,7 @@ export default function FollowUpsPage() {
                         </span>
                       </div>
                       {followUp.lead && (
-                        <div className="mb-2 flex items-center space-x-4 text-sm text-gray-600">
+                        <div className="mb-2 flex items-center space-x-4 text-sm text-base-content/70">
                           <span className="flex items-center">
                             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -139,15 +139,15 @@ export default function FollowUpsPage() {
                           </span>
                         </div>
                       )}
-                      <p className="text-gray-600 mb-2 flex items-center">
-                        <svg className="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <p className="text-base-content/70 mb-2 flex items-center">
+                        <svg className="w-4 h-4 mr-2 text-base-content/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         {new Date(followUp.scheduledFor).toLocaleString()}
                       </p>
                       {followUp.note && (
-                        <p className="text-gray-500 flex items-start">
-                          <svg className="w-4 h-4 mr-2 text-gray-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <p className="text-base-content/60 flex items-start">
+                          <svg className="w-4 h-4 mr-2 text-base-content/50 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                           </svg>
                           {followUp.note}

@@ -78,8 +78,8 @@ export default function PaymentsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No overdue payments</h3>
-              <p className="text-gray-600 mb-6">All payments are on track!</p>
+              <h3 className="text-xl font-semibold text-base-content mb-2">No overdue payments</h3>
+              <p className="text-base-content/70 mb-6">All payments are on track!</p>
               <Link
                 href="/leads"
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
@@ -88,22 +88,22 @@ export default function PaymentsPage() {
               </Link>
             </div>
           ) : (
-            <ul className="divide-y divide-gray-100">
+            <ul className="divide-y divide-base-300">
               {riskyPayments.map((payment) => (
-                <li key={payment._id} className="px-8 py-6 hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
+                <li key={payment._id} className="px-8 py-6 hover:bg-base-200 transition-all duration-200">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">{payment.purpose}</h3>
-                      <p className="text-gray-600 mb-2">
+                      <h3 className="text-xl font-semibold text-base-content mb-2">{payment.purpose}</h3>
+                      <p className="text-base-content/70 mb-2">
                         EMI: ₹{payment.emiAmount?.toLocaleString() || 'N/A'} | 
                         Paid: {payment.emisPaid}/{payment.totalEmis || 'N/A'}
                       </p>
-                      <p className="text-red-600 font-medium">
+                      <p className="text-error font-medium">
                         Due: {new Date(payment.nextDueDate || '').toLocaleDateString()}
                       </p>
                     </div>
                     <div className="text-right ml-6">
-                      <p className="text-2xl font-bold text-gray-900 mb-2">
+                      <p className="text-2xl font-bold text-base-content mb-2">
                         ₹{payment.totalAmount?.toLocaleString() || 'N/A'}
                       </p>
                       <span className={`px-3 py-1 text-xs font-medium rounded-full mb-3 inline-block ${
