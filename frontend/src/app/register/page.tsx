@@ -72,8 +72,8 @@ export default function RegisterPage() {
       } else {
         setError(data.message || "Registration failed");
       }
-    } catch (err) {
-      setError(`Registration failed: ${err.message}`);
+    } catch (err: any) {
+      setError(`Registration failed: ${err?.message || 'Unknown error'}`);
     } finally {
       setIsLoading(false);
     }

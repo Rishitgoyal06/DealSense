@@ -45,7 +45,7 @@ api.interceptors.response.use(
     // Transform error to our ApiError format
     const apiError: ApiError = {
       success: false,
-      message: error.response?.data?.message || error.message || 'An error occurred',
+      message: (error.response?.data as any)?.message || (error as any)?.message || 'An error occurred',
       statusCode: error.response?.status || 500,
     };
     

@@ -27,8 +27,8 @@ export default function FollowUpsPage() {
         // Backend already populates leadId with lead data
         setFollowUps(response.data.map(followUp => ({
           ...followUp,
-          originalLeadId: followUp.leadId._id || followUp.leadId, // Store original ID
-          lead: followUp.leadId // leadId is already populated with lead object
+          originalLeadId: (followUp.leadId as any)?._id || followUp.leadId,
+          lead: typeof followUp.leadId === 'object' ? followUp.leadId as Lead : undefined
         })));
       }
     } catch (error: any) {
