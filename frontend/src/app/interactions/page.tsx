@@ -22,25 +22,37 @@ export default function NotesPage() {
 
   const fetchNotes = async () => {
     try {
+      console.log('Fetching notes...');
       const response = await noteService.getAll();
-      if (response.success && Array.isArray(response.data)) {
-        // Fetch lead details for each note
-        const notesWithLeads = await Promise.all(
-          response.data.map(async (note) => {
-            try {
-              const leadResponse = await leadService.getById(note.leadId);
-              return {
-                ...note,
-                lead: leadResponse.success ? leadResponse.data : undefined
-              };
-            } catch {
-              return note;
-            }
-          })
-        );
-        setNotes(notesWithLeads);
+      console.log('Notes response:', response);
+      
+      if (response.success) {
+        // Handle swapped data/message fields from backend
+        const notesData = response.message || response.data || [];
+        console.log('Notes data:', notesData);
+        
+        if (Array.isArray(notesData)) {
+          console.log('Found notes:', notesData.length);
+          console.log('First note structure:', notesData[0]);
+          console.log('First note leadId:', notesData[0]?.leadId);
+          
+          // Use notes directly since leadId is already populated
+          const notesWithLeads = notesData.map(note => {
+            console.log('Processing note:', note);
+            return {
+              ...note,
+              lead: note.leadId // leadId is already populated with lead data
+            };
+          });
+          
+          console.log('Processed notes:', notesWithLeads);
+          setNotes(notesWithLeads);
+        } else {
+          console.log('Notes data is not an array:', typeof notesData);
+          setNotes([]);
+        }
       } else {
-        console.error('Invalid response format:', response);
+        console.error('Response not successful:', response);
         setNotes([]);
       }
     } catch (error: any) {
@@ -108,16 +120,17 @@ export default function NotesPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
                         <h3 className="text-xl font-semibold text-base-content">
-                          {note.lead ? note.lead.name : `Lead ID: ${note.leadId}`}
+                          {note.leadId?.name || `Lead ID: ${note.leadId?._id || 'Unknown'}`}
                         </h3>
-                        {note.lead && (
+                        <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">DEBUG: {JSON.stringify({hasLeadId: !!note.leadId, leadName: note.leadId?.name})}</span>
+                        {note.leadId && (
                           <span className={`px-3 py-1 text-xs font-medium rounded-full ${
-                            note.lead.leadType === 'buy' ? 'bg-blue-100 text-blue-800' :
-                            note.lead.leadType === 'rent' ? 'bg-green-100 text-green-800' :
-                            note.lead.leadType === 'sell' ? 'bg-purple-100 text-purple-800' :
+                            note.leadId.leadType === 'buy' ? 'bg-blue-100 text-blue-800' :
+                            note.leadId.leadType === 'rent' ? 'bg-green-100 text-green-800' :
+                            note.leadId.leadType === 'sell' ? 'bg-purple-100 text-purple-800' :
                             'bg-orange-100 text-orange-800'
                           }`}>
-                            {note.lead.leadType.toUpperCase()}
+                            {note.leadId.leadType?.toUpperCase() || 'UNKNOWN'}
                           </span>
                         )}
                       </div>
@@ -126,15 +139,15 @@ export default function NotesPage() {
                         <p className="text-base-content whitespace-pre-wrap">{note.content}</p>
                       </div>
                       
-                      {note.lead && (
+                      {note.leadId && (
                         <div className="flex items-center space-x-4 text-sm text-base-content/70">
                           <span className="flex items-center">
                             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
-                            {note.lead.phone}
+                            {note.leadId.phone}
                           </span>
-                          <span>₹{note.lead.budget.toLocaleString()}</span>
+                          <span>₹{note.leadId.budget?.toLocaleString()}</span>
                         </div>
                       )}
                     </div>

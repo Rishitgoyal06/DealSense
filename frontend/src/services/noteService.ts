@@ -75,11 +75,15 @@ class NoteService {
 
   async getAll(): Promise<ApiResponse<Note[]>> {
     try {
+      console.log('Trying API call to /notes');
       const response = await api.get('/notes');
+      console.log('API response:', response);
       return handleApiResponse<Note[]>(response);
     } catch (error) {
+      console.log('API failed, using localStorage fallback');
       // Fallback to localStorage
       const notes = this.getNotesFromStorage();
+      console.log('localStorage notes:', notes);
       
       return {
         success: true,
