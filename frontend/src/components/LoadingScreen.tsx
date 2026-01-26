@@ -18,12 +18,6 @@ export default function LoadingScreen({ message = "Loading..." }: LoadingScreenP
           <p className="text-base-content/70">Real Estate CRM</p>
         </div>
 
-        {/* Enhanced spinner */}
-        <div className="relative mb-6">
-          <div className="loading loading-spinner loading-lg text-primary"></div>
-          <div className="absolute inset-0 loading loading-ring loading-lg text-primary/30"></div>
-        </div>
-
         {/* Loading message */}
         <p className="text-base-content/80 font-medium">{message}</p>
         
