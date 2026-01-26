@@ -63,16 +63,16 @@ export default function NewPaymentForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow">
+    <div className="min-h-screen bg-gradient-to-br from-base-200 to-base-300">
+      <header className="bg-base-100 shadow-lg border-b border-base-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-base-content">
               Create Payment Schedule {leadName && `for ${leadName}`}
             </h1>
             <button
               onClick={() => router.back()}
-              className="text-gray-600 hover:text-gray-900"
+              className="btn btn-ghost btn-sm"
             >
               ← Back
             </button>
@@ -81,17 +81,17 @@ export default function NewPaymentForm() {
       </header>
 
       <main className="max-w-2xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="bg-white shadow rounded-lg">
-          <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <div className="card bg-base-100 shadow-xl">
+          <form onSubmit={handleSubmit} className="card-body space-y-6">
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-                {error}
+              <div className="alert alert-error">
+                <span>{error}</span>
               </div>
             )}
 
-            <div>
-              <label htmlFor="purpose" className="block text-sm font-medium text-gray-700">
-                Purpose
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium text-base-content">Purpose</span>
               </label>
               <input
                 type="text"
@@ -100,74 +100,75 @@ export default function NewPaymentForm() {
                 onChange={(e) => setPurpose(e.target.value)}
                 required
                 placeholder="e.g., Property Purchase, Loan EMI"
-                className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="input input-bordered w-full focus:input-success"
               />
             </div>
 
-            <div>
-              <label htmlFor="totalAmount" className="block text-sm font-medium text-gray-700">
-                Total Amount (Optional)
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium text-base-content/70">Total Amount (Optional)</span>
               </label>
               <input
                 type="number"
                 id="totalAmount"
                 value={totalAmount}
                 onChange={(e) => setTotalAmount(e.target.value)}
-                className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="input input-bordered w-full focus:input-success"
               />
             </div>
 
-            <div>
-              <label htmlFor="emiAmount" className="block text-sm font-medium text-gray-700">
-                EMI Amount (Optional)
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium text-base-content/70">EMI Amount (Optional)</span>
               </label>
               <input
                 type="number"
                 id="emiAmount"
                 value={emiAmount}
                 onChange={(e) => setEmiAmount(e.target.value)}
-                className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="input input-bordered w-full focus:input-success"
               />
             </div>
 
-            <div>
-              <label htmlFor="totalEmis" className="block text-sm font-medium text-gray-700">
-                Total EMIs (Optional)
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium text-base-content/70">Total EMIs (Optional)</span>
               </label>
               <input
                 type="number"
                 id="totalEmis"
                 value={totalEmis}
                 onChange={(e) => setTotalEmis(e.target.value)}
-                className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="input input-bordered w-full focus:input-success"
               />
             </div>
 
-            <div>
-              <label htmlFor="nextDueDate" className="block text-sm font-medium text-gray-700">
-                Next Due Date (Optional)
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium text-base-content/70">Next Due Date (Optional)</span>
               </label>
               <input
                 type="date"
                 id="nextDueDate"
                 value={nextDueDate}
                 onChange={(e) => setNextDueDate(e.target.value)}
-                className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="input input-bordered w-full focus:input-success"
               />
             </div>
 
-            <div className="flex justify-end space-x-3">
+            <div className="flex justify-end gap-3 pt-4">
               <button
                 type="button"
                 onClick={() => router.back()}
-                className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                className="btn btn-ghost"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50"
+                className="btn text-white"
+                style={{ backgroundColor: "#166534" }}
               >
                 {loading ? "Creating..." : "Create Payment Schedule"}
               </button>

@@ -57,16 +57,16 @@ export default function NewFollowUpForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow">
+    <div className="min-h-screen bg-gradient-to-br from-base-200 to-base-300">
+      <header className="bg-base-100 shadow-lg border-b border-base-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-base-content">
               Schedule Follow-up {leadName && `for ${leadName}`}
             </h1>
             <button
               onClick={() => router.back()}
-              className="text-gray-600 hover:text-gray-900"
+              className="btn btn-ghost btn-sm"
             >
               ← Back
             </button>
@@ -75,17 +75,17 @@ export default function NewFollowUpForm() {
       </header>
 
       <main className="max-w-2xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="bg-white shadow rounded-lg">
-          <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <div className="card bg-base-100 shadow-xl">
+          <form onSubmit={handleSubmit} className="card-body space-y-6">
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-                {error}
+              <div className="alert alert-error">
+                <span>{error}</span>
               </div>
             )}
 
-            <div>
-              <label htmlFor="scheduledFor" className="block text-sm font-medium text-gray-700">
-                Scheduled Date & Time
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium text-base-content">Scheduled Date & Time</span>
               </label>
               <input
                 type="datetime-local"
@@ -93,13 +93,13 @@ export default function NewFollowUpForm() {
                 value={scheduledFor}
                 onChange={(e) => setScheduledFor(e.target.value)}
                 required
-                className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="input input-bordered w-full focus:input-success"
               />
             </div>
 
-            <div>
-              <label htmlFor="note" className="block text-sm font-medium text-gray-700">
-                Note
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-medium text-base-content">Note</span>
               </label>
               <textarea
                 id="note"
@@ -107,22 +107,23 @@ export default function NewFollowUpForm() {
                 onChange={(e) => setNote(e.target.value)}
                 rows={4}
                 placeholder="Add any notes for this follow-up..."
-                className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                className="textarea textarea-bordered w-full focus:textarea-success"
               />
             </div>
 
-            <div className="flex justify-end space-x-3">
+            <div className="flex justify-end gap-3 pt-4">
               <button
                 type="button"
                 onClick={() => router.back()}
-                className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                className="btn btn-ghost"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50"
+                className="btn text-white"
+                style={{ backgroundColor: "#166534" }}
               >
                 {loading ? "Scheduling..." : "Schedule Follow-up"}
               </button>

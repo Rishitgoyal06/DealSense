@@ -96,7 +96,7 @@ export default function NewLeadPage() {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-medium flex items-center gap-2">
+                  <span className="label-text font-medium flex items-center gap-2 text-base-content">
                     <UserPlus size={16} />
                     Name
                   </span>
@@ -114,7 +114,7 @@ export default function NewLeadPage() {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-medium flex items-center gap-2">
+                  <span className="label-text font-medium flex items-center gap-2 text-base-content">
                     <Phone size={16} />
                     Phone
                   </span>
@@ -132,7 +132,7 @@ export default function NewLeadPage() {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-medium flex items-center gap-2">
+                  <span className="label-text font-medium flex items-center gap-2 text-base-content">
                     <Building size={16} />
                     Lead Type
                   </span>
@@ -152,7 +152,7 @@ export default function NewLeadPage() {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-medium">Requirement Details</span>
+                  <span className="label-text font-medium text-base-content">Requirement Details</span>
                 </label>
                 <textarea
                   id="requirement"
@@ -168,7 +168,7 @@ export default function NewLeadPage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text font-medium flex items-center gap-2">
+                    <span className="label-text font-medium flex items-center gap-2 text-base-content">
                       <DollarSign size={16} />
                       Budget
                     </span>
@@ -213,7 +213,7 @@ export default function NewLeadPage() {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-medium flex items-center gap-2">
+                  <span className="label-text font-medium flex items-center gap-2 text-base-content">
                     <MapPin size={16} />
                     Preferred Locations
                   </span>
