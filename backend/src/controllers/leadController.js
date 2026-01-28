@@ -15,6 +15,7 @@ export const createLead = asyncHandler(async (req, res) => {
 
 // GET all leads
 export const getLeads = asyncHandler(async (req, res) => {
+  console.log("USER FROM TOKEN:", req.user);
   const leads = await Lead.find({ userId: req.user }).sort({ createdAt: -1 });
 
   res.json(new ApiResponse(200, "Leads fetched", leads));
