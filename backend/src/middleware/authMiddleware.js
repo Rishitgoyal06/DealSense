@@ -15,11 +15,14 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 
   const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-  req.user = await User.findById(decoded._id).select("-password");
+  const user = await User.findById(decoded._id).select("-password");
 
-  if (!req.user) {
+  if (!user) {
     throw new ApiError("User not found", 401);
   }
+
+  req.user = user._id; // Store only the user ID
+  req.userObj = user;  // Store full user object if needed
 
   next();
 });
