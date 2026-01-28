@@ -10,8 +10,10 @@ import followUpRoutes from './routes/followUpRoutes.js';
 import paymentRoutes from './routes/paymentRoutes.js';
 import interactionRoutes from './routes/interactionRoutes.js';
 import noteRoutes from './routes/noteRoutes.js';
+import { emiReminderCron } from "./cron/emiReminder.cron.js";
 
 const app = express();
+emiReminderCron();
 
 app.use(cors({
     origin: true,

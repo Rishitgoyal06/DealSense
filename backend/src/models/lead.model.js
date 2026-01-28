@@ -40,6 +40,18 @@ const leadSchema = new mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    emiAmount: {
+      type: Number,
+    },
+
+    emiDueDate: {
+      type: Date,
+    },
+
+    emiReminderSent: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
