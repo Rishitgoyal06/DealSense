@@ -11,13 +11,29 @@ import paymentRoutes from './routes/paymentRoutes.js';
 import interactionRoutes from './routes/interactionRoutes.js';
 import noteRoutes from './routes/noteRoutes.js';
 import { emiReminderCron } from "./cron/emiReminder.cron.js";
+import { sendEmail } from "./utils/email.js";
+
 
 const app = express();
 emiReminderCron();
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+  "https://frontend-inky-five-23.vercel.app"
+];
+
 app.use(cors({
-    origin: true,
-    credentials: true
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    callback(new Error("CORS not allowed"));
+  },
+  credentials: true
 }));
 
 app.use(express.json({limit: '16kb'}));
