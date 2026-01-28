@@ -5,49 +5,59 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 
 // CREATE lead
 export const createLead = asyncHandler(async (req, res) => {
-  const lead = await Lead.create(req.body);
-  return res.status(201).json(new ApiResponse(201, "Lead created successfully", lead));
+  const lead = await Lead.create({
+    ...req.body,
+    userId: req.user,
+  });
+
+  res.status(201).json(new ApiResponse(201, "Lead created", lead));
 });
 
 // GET all leads
 export const getLeads = asyncHandler(async (req, res) => {
-  const leads = await Lead.find().sort({ createdAt: -1 });
-  return res.json(new ApiResponse(200, "Leads fetched successfully", leads));
+  const leads = await Lead.find({ userId: req.user }).sort({ createdAt: -1 });
+
+  res.json(new ApiResponse(200, "Leads fetched", leads));
 });
+
 
 // GET single lead
 export const getLeadById = asyncHandler(async (req, res) => {
-  const lead = await Lead.findById(req.params.id);
-  
-  if (!lead) {
-    throw new ApiError("Lead not found", 404);
-  }
-  
-  return res.json(new ApiResponse(200, "Lead fetched successfully", lead));
+  const lead = await Lead.findOne({
+    _id: req.params.id,
+    userId: req.user,
+  });
+
+  if (!lead) throw new ApiError(404, "Lead not found");
+
+  res.json(new ApiResponse(200, "Lead fetched", lead));
 });
+
 
 // UPDATE lead
 export const updateLead = asyncHandler(async (req, res) => {
-  const updatedLead = await Lead.findByIdAndUpdate(
-    req.params.id,
+  const lead = await Lead.findOneAndUpdate(
+    { _id: req.params.id, userId: req.user },
     req.body,
     { new: true }
   );
 
-  if (!updatedLead) {
-    throw new ApiError("Lead not found", 404);
-  }
+  if (!lead) throw new ApiError(404, "Unauthorized or lead not found");
 
-  return res.json(new ApiResponse(200, "Lead updated successfully", updatedLead));
+  res.json(new ApiResponse(200, "Lead updated", lead));
 });
+
 
 // UPDATE lead status
 export const updateLeadStatus = asyncHandler(async (req, res) => {
   const { status } = req.body;
-  const lead = await Lead.findById(req.params.id);
+  const lead = await Lead.findOne({
+    _id: req.params.id,
+    userId: req.user
+  });
 
   if (!lead) {
-    throw new ApiError("Lead not found", 404);
+    throw new ApiError(404, "Lead not found or unauthorized");
   }
 
   lead.status = status;
@@ -58,10 +68,13 @@ export const updateLeadStatus = asyncHandler(async (req, res) => {
 
 // DELETE lead
 export const deleteLead = asyncHandler(async (req, res) => {
-  const lead = await Lead.findByIdAndDelete(req.params.id);
+  const lead = await Lead.findOneAndDelete({
+    _id: req.params.id,
+    userId: req.user
+  });
 
   if (!lead) {
-    throw new ApiError("Lead not found", 404);
+    throw new ApiError(404, "Lead not found or unauthorized");
   }
 
   return res.json(new ApiResponse(200, "Lead deleted successfully", { id: req.params.id }));

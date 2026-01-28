@@ -1,4 +1,5 @@
 import Note from '../models/note.model.js';
+import { Lead } from '../models/lead.model.js';
 import { ApiError } from '../utils/ApiError.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
@@ -8,6 +9,12 @@ const createNote = asyncHandler(async (req, res) => {
 
   if (!leadId || !content) {
     throw new ApiError(400, 'Lead ID and content are required');
+  }
+
+  // Verify the lead belongs to the current user
+  const lead = await Lead.findOne({ _id: leadId, userId: req.user });
+  if (!lead) {
+    throw new ApiError(404, 'Lead not found or unauthorized');
   }
 
   const note = await Note.create({
@@ -23,6 +30,12 @@ const createNote = asyncHandler(async (req, res) => {
 const getNotesByLead = asyncHandler(async (req, res) => {
   const { leadId } = req.params;
 
+  // Verify the lead belongs to the current user
+  const lead = await Lead.findOne({ _id: leadId, userId: req.user });
+  if (!lead) {
+    throw new ApiError(404, 'Lead not found or unauthorized');
+  }
+
   const notes = await Note.find({ leadId })
     .sort({ createdAt: -1 });
 
@@ -32,7 +45,11 @@ const getNotesByLead = asyncHandler(async (req, res) => {
 });
 
 const getAllNotes = asyncHandler(async (req, res) => {
-  const notes = await Note.find()
+  // Get user's leads first
+  const userLeads = await Lead.find({ userId: req.user }).select('_id');
+  const leadIds = userLeads.map(lead => lead._id);
+
+  const notes = await Note.find({ leadId: { $in: leadIds } })
     .populate('leadId', 'name phone budget leadType status')
     .sort({ createdAt: -1 });
 
