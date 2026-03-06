@@ -16,6 +16,6 @@ services:
       - key: PORT
         value: 5000
       - key: CORS_ORIGIN
-        value: http://localhost:3000,http://localhost:3001,https://frontend-inky-five-23.vercel.app
+        value: http://localhost:3000,http://localhost:3001,https://deal-sense-pi.vercel.app
       - key: ACCESS_TOKEN_EXPIRY
         value: 1d

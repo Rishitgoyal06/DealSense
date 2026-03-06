@@ -8,5 +8,8 @@
       "source": "/api/:path*",
       "destination": "https://dealsense-j49r.onrender.com/api/:path*"
     }
-  ]
+  ],
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://dealsense-j49r.onrender.com/api"
+  }
 }

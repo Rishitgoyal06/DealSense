@@ -20,7 +20,7 @@ emiReminderCron();
 const allowedOrigins = [
   "http://localhost:3000",
   "http://127.0.0.1:3000",
-  "https://frontend-inky-five-23.vercel.app"
+  "https://deal-sense-pi.vercel.app"
 ];
 
 app.use(cors({

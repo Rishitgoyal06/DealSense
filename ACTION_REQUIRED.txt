@@ -1,0 +1,63 @@
+╔══════════════════════════════════════════════════════════════╗
+║           🚨 FINAL STEP REQUIRED 🚨                          ║
+║        Update Render Environment Variable                    ║
+╚══════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────┐
+│ YOUR NEW VERCEL URL:                                         │
+│ https://deal-sense-pi.vercel.app                             │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│ WHAT I UPDATED (Local Files):                                │
+│                                                              │
+│ ✅ backend/.env                                              │
+│ ✅ backend/src/app.js                                        │
+│ ✅ render.yaml                                               │
+│ ✅ README.md                                                 │
+│ ✅ frontend/vercel.json                                      │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│ WHAT YOU NEED TO DO (Render Dashboard):                      │
+│                                                              │
+│ 1. Go to: https://dashboard.render.com                      │
+│                                                              │
+│ 2. Click: dealsense-j49r (your backend service)             │
+│                                                              │
+│ 3. Click: Environment tab (left sidebar)                    │
+│                                                              │
+│ 4. Find: CORS_ORIGIN variable                               │
+│                                                              │
+│ 5. Click: Edit (pencil icon)                                │
+│                                                              │
+│ 6. Update value to:                                         │
+│    http://localhost:3000,http://localhost:3001,https://deal-sense-pi.vercel.app
+│                                                              │
+│ 7. Click: Save Changes                                      │
+│                                                              │
+│ 8. Wait: 2-3 minutes for auto-redeploy                      │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│ THEN TEST:                                                   │
+│                                                              │
+│ 1. Visit: https://deal-sense-pi.vercel.app                  │
+│                                                              │
+│ 2. Click: Register or Login                                 │
+│                                                              │
+│ 3. Create a test lead                                       │
+│                                                              │
+│ 4. Verify: No CORS errors in browser console                │
+└──────────────────────────────────────────────────────────────┘
+
+╔══════════════════════════════════════════════════════════════╗
+║  ⚠️  Without updating Render, frontend can't talk to backend ║
+╚══════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────┐
+│ DEPLOYMENT URLS:                                             │
+│                                                              │
+│ Frontend: https://deal-sense-pi.vercel.app                   │
+│ Backend:  https://dealsense-j49r.onrender.com               │
+└──────────────────────────────────────────────────────────────┘

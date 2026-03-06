@@ -410,7 +410,7 @@ npm run dev  # Starts on port 3000
 
 ### Frontend Deployment
 - **Platform**: Vercel
-- **URL**: https://frontend-inky-five-23.vercel.app
+- **URL**: https://deal-sense-pi.vercel.app
 - Static site generation
 - CDN configuration
 - Environment-specific builds
