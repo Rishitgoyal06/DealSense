@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: dealsense-backend
+    env: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: ACCESS_TOKEN_SECRET
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: FROM_EMAIL
+        sync: false
+      - key: PORT
+        value: 5000
+      - key: CORS_ORIGIN
+        value: http://localhost:3000,http://localhost:3001,https://frontend-inky-five-23.vercel.app
+      - key: ACCESS_TOKEN_EXPIRY
+        value: 1d

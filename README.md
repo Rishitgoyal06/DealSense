@@ -402,13 +402,15 @@ npm run dev  # Starts on port 3000
 ## 🔧 Deployment Strategy
 
 ### Backend Deployment
+- **Platform**: Render
+- **URL**: https://dealsense-j49r.onrender.com
 - Docker containerization
-- AWS/Heroku deployment
 - Environment variable management
 - Database migration scripts
 
 ### Frontend Deployment
-- Vercel/Netlify deployment
+- **Platform**: Vercel
+- **URL**: https://frontend-inky-five-23.vercel.app
 - Static site generation
 - CDN configuration
 - Environment-specific builds

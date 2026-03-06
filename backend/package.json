@@ -14,9 +14,11 @@
   "description": "",
   "devDependencies": {
     "nodemon": "^3.1.11",
-    "prettier": "^3.7.4"
+    "prettier": "^3.7.4",
+    "prisma": "^7.4.2"
   },
   "dependencies": {
+    "@prisma/client": "^7.4.2",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",

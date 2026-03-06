@@ -50,7 +50,7 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/interactions', interactionRoutes);
 app.use('/api/notes', noteRoutes);
 
-// Keep-alive endpoint to prevent Railway sleep
+// Keep-alive endpoint to prevent Render sleep
 app.get('/api/ping', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
