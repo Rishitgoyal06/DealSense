@@ -1,89 +1,78 @@
-# Vercel Deployment Fix Guide
+# Vercel Deployment Fix Guide - UPDATED
 
 ## Problem
-Error: "No Next.js version detected"
+Error: "Could not read package.json: ENOENT"
 
-## Solution
-Vercel needs to deploy from the `frontend` directory, not the root.
-
----
-
-## Option 1: Deploy via Vercel Dashboard (Recommended)
-
-1. Go to: https://vercel.com/dashboard
-2. Click on your project: `frontend-inky-five-23`
-3. Go to **Settings** → **General**
-4. Update **Root Directory**: 
-   - Change from: `.` or empty
-   - Change to: `frontend`
-5. Click **Save**
-6. Go to **Deployments** → Click **Redeploy**
+## Root Cause
+Vercel is trying to build from root directory instead of `frontend` directory.
 
 ---
 
-## Option 2: Deploy via CLI
+## ✅ SOLUTION: Update Root Directory in Vercel Dashboard
+
+### Step-by-Step:
+
+1. **Go to Vercel Dashboard**
+   - Visit: https://vercel.com/dashboard
+   - Click on your project: `frontend-inky-five-23`
+
+2. **Go to Settings**
+   - Click **Settings** tab at the top
+   - Click **General** in the left sidebar
+
+3. **Update Root Directory**
+   - Scroll down to **Root Directory**
+   - Click **Edit**
+   - Enter: `frontend`
+   - Click **Save**
+
+4. **Redeploy**
+   - Go to **Deployments** tab
+   - Click the three dots (...) on the latest deployment
+   - Click **Redeploy**
+   - Select **Use existing Build Cache: No**
+   - Click **Redeploy**
+
+---
+
+## Alternative: Deploy from CLI
+
+If dashboard doesn't work:
 
 ```bash
 # Navigate to frontend directory
-cd frontend
+cd /home/rishit/Downloads/DealSense/frontend
 
-# Deploy to Vercel
-vercel --prod
+# Remove any existing Vercel config
+rm -rf .vercel
 
-# Follow prompts:
-# - Link to existing project? Yes
-# - Which project? frontend-inky-five-23
-```
-
----
-
-## Option 3: Fresh Deployment
-
-If the above doesn't work, create a new deployment:
-
-```bash
-cd frontend
+# Deploy fresh
 vercel --prod
 
 # When prompted:
-# - Set up and deploy? Yes
-# - Which scope? Your account
-# - Link to existing project? No
-# - Project name? dealsense-frontend
-# - Directory? ./ (current directory)
-# - Override settings? No
+# Set up and deploy? → Yes
+# Which scope? → Your account
+# Link to existing project? → Yes
+# What's the name of your existing project? → frontend-inky-five-23
 ```
 
 ---
 
-## Verify Deployment
+## What I Fixed:
 
-After deployment, test:
-
-1. **Frontend URL**: https://your-new-url.vercel.app
-2. **Login page**: https://your-new-url.vercel.app/login
-3. **API connection**: Check browser console for API calls
+✅ Deleted root `vercel.json` (was causing conflicts)
+✅ Created `frontend/vercel.json` with proper config
+✅ Root directory should be set to `frontend` in Vercel dashboard
 
 ---
 
-## Update Frontend URL in Backend
+## Verify After Deployment:
 
-If you get a new Vercel URL, update:
-
-**File:** `backend/.env`
-```env
-CORS_ORIGIN=http://localhost:3000,http://localhost:3001,https://YOUR-NEW-URL.vercel.app
-```
-
-And update on Render dashboard.
+1. Visit: https://frontend-inky-five-23.vercel.app
+2. Check login page loads
+3. Try logging in
+4. Check browser console for API calls to Render backend
 
 ---
 
-## Files Created
-
-✅ `frontend/vercel.json` - Proper Vercel config
-✅ Root `vercel.json` - Updated (but frontend/vercel.json takes priority)
-
----
-
-**Next Step:** Deploy using Option 1 or 2 above! 🚀
+**IMPORTANT:** The Root Directory setting in Vercel dashboard MUST be `frontend`

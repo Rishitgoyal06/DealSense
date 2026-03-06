@@ -1,0 +1,78 @@
+╔══════════════════════════════════════════════════════════════╗
+║                  VERCEL DEPLOYMENT FIX                       ║
+║                  Quick Reference Card                        ║
+╚══════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────┐
+│ THE PROBLEM:                                                 │
+│ ❌ Error: ENOENT: no such file or directory                 │
+│ ❌ Could not read package.json                              │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│ THE CAUSE:                                                   │
+│ Vercel is looking in wrong directory (root instead of       │
+│ frontend folder where package.json actually exists)         │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│ THE FIX (Vercel Dashboard):                                  │
+│                                                              │
+│ 1. Go to: https://vercel.com/dashboard                      │
+│                                                              │
+│ 2. Click: frontend-inky-five-23 (your project)              │
+│                                                              │
+│ 3. Click: Settings → General                                │
+│                                                              │
+│ 4. Find: "Root Directory" section                           │
+│                                                              │
+│ 5. Click: Edit button                                       │
+│                                                              │
+│ 6. Type: frontend                                           │
+│                                                              │
+│ 7. Click: Save                                              │
+│                                                              │
+│ 8. Go to: Deployments tab                                   │
+│                                                              │
+│ 9. Click: ... (three dots) → Redeploy                       │
+│                                                              │
+│ 10. Select: "Use existing Build Cache: No"                  │
+│                                                              │
+│ 11. Click: Redeploy                                         │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│ ALTERNATIVE FIX (CLI):                                       │
+│                                                              │
+│ $ cd frontend                                               │
+│ $ vercel --prod                                             │
+│                                                              │
+│ When prompted:                                              │
+│ - Link to existing project? → Yes                          │
+│ - Select: frontend-inky-five-23                            │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│ VERIFY SUCCESS:                                              │
+│                                                              │
+│ ✅ Visit: https://frontend-inky-five-23.vercel.app          │
+│ ✅ Login page should load                                   │
+│ ✅ No console errors                                        │
+│ ✅ Can login/register                                       │
+└──────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────┐
+│ PROJECT STRUCTURE:                                           │
+│                                                              │
+│ DealSense/                                                  │
+│ ├── backend/          ← Deployed on Render                 │
+│ ├── frontend/         ← Deploy THIS folder on Vercel       │
+│ │   ├── package.json  ← Vercel needs to find this!        │
+│ │   ├── next.config.mjs                                    │
+│ │   └── src/                                               │
+│ └── README.md                                               │
+└──────────────────────────────────────────────────────────────┘
+
+╔══════════════════════════════════════════════════════════════╗
+║  KEY POINT: Root Directory MUST be set to "frontend"        ║
+╚══════════════════════════════════════════════════════════════╝
